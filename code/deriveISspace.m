@@ -40,7 +40,8 @@ function deriveISspace(PcbStatsFile, freshlyNormalize, ISNormRotStatsFile, outpu
     fstd = std(sstats);
     normalized = (sstats - fmean) ./ fstd;
     [coeff, score, latent] = pca(normalized);
-    save(ISNormRotStatsFile, 'fmean', 'fstd', 'coeff');
+    provenance = ['deriveISspace ' PcbStatsFile ' ' datestr(clock)] 
+    save(ISNormRotStatsFile, 'fmean', 'fstd', 'coeff', 'provenance');
     variExplained(latent);
   else
     load(ISNormRotStatsFile);
