@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\oddsidemargin 1mm
+
+\textwidth 6.3in 
+\topmargin -5mm
+\headheight 5mm 
+\headsep 8mm
+\textheight 8.9in
+
+\renewcommand{\floatpagefraction}{.8}
+\renewcommand{\baselinestretch}{1.0}
+\parindent 0pt
+\parskip  4pt
+
+%%=========================================================
+\begin{document}
+\noindent
+\thispagestyle{empty}
+\sloppy
+
+\rule{1mm}{0mm}
+
+\vspace{-17mm}
+{\LARGE \bf Interaction Style Modeling  Toolset }
+
+\smallskip
+{\large \bf an extension of the  Midlevel Prosodic Features Toolikit}
+\medskip
+
+
+{\LARGE \bf Version 1.0}
+\vspace{7mm}
+
+
+{\bf Nigel Ward, University of Texas at El Paso}
+
+{\bf \today }
+\bigskip
+
+%\vspace{-1ex}
+%\begin{tabular}{p{7cm}rl}
+%  & \ref{sec:overview} & Overview  \\
+%  & \ref{sec:starting} & Getting the Code 
+%\end{tabular}
+
+\vspace{-3.5ex}
+%%=========================================================
+\section{Overview}    \label{sec:overview}
+
+This toolset supports the analysis of interaction styles in spoken
+dialog.  To quote from the abstract of  my as-yet-published paper:
+
+\begin{quote}
+  In spoken dialog, people clearly vary in their interaction styles,
+  but a comprehensive model of the space of variation has been
+  lacking.  To address this need, I applied Principal Component
+  Analysis, using features designed to capture aspects of
+  interaction-related prosodic behaviors, to tens of thousands of conversation
+  fragments from the Switchboard corpus of American English telephone
+  speech. 
+\end{quote}
+
+
+This toolset has so far been used only for the analyses reported in
+the paper, but is ddesigned to generally support computational
+analyses of interaction styles, for both scientific and practical
+purposes, as discussed in the paper.
+
+Specifically, this code enables one to:
+
+\begin{itemize}   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+\item derive a vector-space representation of interaction styles from
+  a corpus of stereo-recorded spoken dialogs.
+\item given any new dialog, compute
+  where it lies in an existing space of interaction styles.
+\item given a corpus with metadata (for now just  Switchboard), compute various
+  correlations and statistics on the factors affecting interaction styles .
+\end{itemize}
+
+This document serves mostly to overview the workflow and name the
+specific Matlab functions to call.  It should be read after getting
+the big picture from the paper, and can be followed by reading the
+comments in the code. It is a work in progress; comments and
+suggestions are welcome.
+
+
+%==========================================================
+\section{Getting the Code}  \label{sec:starting}
+
+This code was written in Matlab and runs on Matlab version 2019.
+
+The code is at {\tt https://github.com/nigelgward/TBD }.  It requires
+%\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+the Midlevel Toolkit, which is available at 
+{\tt https://github.com/nigelgward/midlevel/ }, complete with documentation. 
+
+%==========================================================
+\section{Terminology}
+
+The term ``dimension'' in the comments may refer either to a prosodic
+construction dimension or to an interaction style dimensions.
+
+%==========================================================
+\section{Corpus Preparation }
+
+Create a directory somewhere with lots of space, refered to below as
+{\tt motherDirectory}, and copy the Switchboard data discs there one
+by one, naming the subdirectories {\tt disc1} \ldots {\tt disc4}.
+
+Create {\tt wav}-format copies of each audio file using {\tt
+  code/sph-to-wav.sh} .
+
+Create the pitch files using {\tt midlevel/src/reaperize.sh} .
+
+Decide how to split the data into subsets, and in {\it splits/} create
+an index file for each. How I did this for Switchboard is described in
+{\tt labnotes.txt}.  Each index file contains a one-per-line listing
+of the audio files in that set.
+
+Run {\tt prepMetadata.sh}.
+
+%==========================================================
+\section{Building the Model}
+
+Open Matlab and change to the {\tt stats} subdirectory.. 
+
+Run {\tt computeStyleParams.m('stats/trainset.txt','trainStats.csv')}
+to create the features for all files in the training set.  The output,
+here {\tt trainStats.csv}, is sometimes called a PCB file, as it
+contains features based on prosodic-construction bin counts.
+
+This will take many hours, so if it crashes, be prepared to look at
+{\tt trainStats.csv} to see how far it got, and edit the code to just
+append stats for the files not already processed.
+
+This file has three hidden dependencies, reading data from hardcoded
+filenames.  The first two, {\tt fsfile} and {\tt rsfile} specify how
+to compute the prosodic dimensions, as described in the midlevel
+documentation. The third is {\tt sifile} is used to specify the
+bins. Usually this should be held constant for all analyses, unless
+you want to define not only a new interaction space but also to
+redefine the basic features used. 
+
+\medskip
+Now run {\tt deriveISspace('trainStats.csv', true,
+  'trainIsNormRot.mat', 'trainIStyles')}. This will create the model
+and save its parameters in the {\tt mat} file. It will also print out
+many interesting statistics that can be copied into the paper.  It
+also pops up a figure that will go in the paper (when {\tt
+  compareWithSubsets} is uncommented).
+
+This will also write several files, notably:
+
+\begin{itemize}   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+\item {\tt loadingsTables.txt}, written to {\tt stats} shows, for each
+  dimension (each interaction-style dimension) the loadings on the
+  behavioral features (the prosodic-constructions-binned features).
+\item many files with names starting with {\tt isratios}.  These can
+  be examined, for example by {\tt sort -n isratios1hi.txt | more}.
+  Once computed, it's nice to save them in a safe place, for example
+  by moving them all to {\tt wordstats}. 
+\item many files with names starting with {\tt idimWords}.  These can
+  be examined with LIWC.
+\item {\tt sox-commands.sh}, a script which can be run with {\tt bash}
+  to generate various audio fragments.  These can then be listened to
+  to help understand the meaning of the various dimensions.  Once
+  created, it's nice to move them somewhere safe, e.g. {\tt
+    exemplars}.  The script also creates some anchor stimuli, to use
+  in the human-perceptions experiment. 
+\end{itemize}
+
+%==========================================================
+\section{Applying a Model to New Data}
+
+This is to be done, for example, when choosing clips to use for the
+experiment, which should, of course, be taken from data unseen in
+training the model or interpreting the dimensions: thus from held out
+testset data.
+
+** not tested yet **
+
+First {\tt computeStyleParams.m('code/testset2.txt','test2Stats.csv')}.
+
+Now run {\tt deriveISspace('test2Stats.csv', false,
+  'trainIsNormRot.mat')}, importantly specifying {\tt false} for the
+second parameter.
+
+
+%==========================================================
+\section{Acknowledgments }  
+
+
+%%=========================================================
+\bibliographystyle{IEEEtran}
+%\bibliography{../../book/bib}
+\bibliography{bib}     % temporary local copy 
+
+%%=========================================================
+\end{document}

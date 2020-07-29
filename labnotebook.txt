@@ -1,0 +1,925 @@
+
+Lab Notes for the Interaction Styles Project
+
+this file is nigel/istyles/labnotes.txt
+
+See also the paper istyles/paper/draft.tex and the documentation in
+doc/istyles.pdf.
+
+As a lab notebook much here is not obsolete or irrelevant. 
+
+
+February 11, 2020
+
+copy the switchboard discs one by one to this directory,
+using my home-computer disc drive and USB
+
+conversion from sph to au using sox: code/sph-to-au.bash
+
+Creating the subsets of conversations:
+- Excluding poor recordings
+  if the rating is 4 or higher in any of column 5-10 of rating_tab.csv
+  (meaning on either side the echo, static, or background noise is high)
+  exclude that file (add it to excludedSet.txt)  451 such files 
+
+  NB: might also consider the data split used by Stolcke-Ries CL 2000 Dialog Act...
+
+
+  awk '{if ($5>= 4 || $6 >= 4 || $7>=4 || $8>=4 || $9>=4 || $10>=4) print substr($1,0,4)}' rating_tab.csv > excludedSet.txt
+
+- Selecting the heldout speakers, namely every 10th speaker
+  awk 'NR%10 == 0 {print substr($1,0,4)}' caller_tab.csv > heldOutCallers.txt
+
+- Selecting conversations with a speaker from the heldout set
+  sort -nk3 call_conv_tab.csv > call_conv_tab_sorted_by_caller.csv
+  in emacs, append a comma to every line of heldOutCallers.txt and save as heldOutCallersComma.txt
+  join -2 3  heldoutCallersComma.txt call_conv_tab_sorted_by_caller.csv | awk '{print substr($2,0,4)}' > callsWithAHeldoutSpeaker.txt
+  now exclude those already in  ExcludedSet.txt, to obtain testset2.txt
+  sort callsWithAHeldoutSpeaker.txt | uniq > callsWithAHeldoutSpeakerSorted.txt
+  comm -3 callsWithAHeldoutSpeakerSorted.txt excludedSet.txt | awk 'BEGIN{FS="\t"}; {if ($1) print $1}' > testset2.txt 
+  gives 357 files
+
+- out of the files in neither of the above, select 10% as testset2.txt
+  cat excludedSet.txt testset2.txt | sort | uniq | tmp1.txt
+  awk '{print substr($1,0,4)}' conv_tab.csv  > allCalls.txt
+
+  comm -3 allCalls.txt tmp1.txt | awk 'BEGIN{FS="\t"}; {if ($1) print $1}' > tmp2.txt  % 1630 lines 
+  awk 'NR%8 == 0 {print $1}' tmp2.txt > testset1.txt
+
+- all of the rest become trainset.txt
+  awk 'NR%8 != 0 {print $1}' tmp2.txt > trainset.txt
+
+Result is 
+  451   451  2255 excludedSet.txt
+  203   203  1015 testset1.txt   % unseen files with known speakers
+  357   357  1785 testset2.txt   % files with at least one unseen speaker 
+ 1427  1427  7135 trainset.txt
+ 2438  2438 12190 total
+
+February 17, 2020
+
+The pitch tracker used by the midlevel toolkit, fxrapt, fails for some
+Switchboard files ... so modifying the code to alternatively use
+reaper.  The context is explained in the Pitch Trackers section of the
+Midlevel Toolkit Documentation.
+
+
+It takeas about 60 seconds to compute the pitch for both tracks of a
+file, and about 20 seconds to do the normalization and rotation if
+both tracks' pitch have been computed.  So it's about 90 seconds to
+process each file.
+
+Maybe anyway I should move away from fxrapt. In Matlab, the
+alternatives include 
+- Matlab built-in pitch, plus the helper function
+- Yaapt, claimed to be robust for telephony, 
+- VoiceSauce from UCLA, designed for phonetics, so perhaps slow
+- AMDF by Rabiner and friends
+- MBSC
+- Xuejing Sun's code
+
+Feb 20, 2020
+
+Testing the Matlab built-in pitch tracker, using the
+testMatlabPitch.m, in the code subdirectory.  It's very fast, but the
+default is to find pitch everywhere, so it's hard to evaluate.  When I
+apply the VAD, with a very strict threshold, the pitch curve still has
+many outliers/false alarms, and lots of doubling and halving.  There
+is a Matlab document on how to postfilter this to obtain a
+better-looking pitch track, but it looks messy.
+
+Now trying YAAPT: the Matlab implementation.  It's fast and the
+results look good on both clean and 30seconds of switchboard speech.
+It's claimed to be robust for telephone speech, but it fails on many
+switchboard files, including some that fxrapt could handle.
+
+An option is to chop the switchboard files into 1-minute chunks, to
+reduce the fraction that pitch trackers fail on.
+
+Another option is to try a non-Matlab pitch tracker.
+
+Praat gets good press, Strombergsson...
+
+In Python there is
+  RAPT
+  yaapt, which Dita had used; can be
+
+re Yaapt, can download from mccraig;  documentation from http://bjbschmitt.github.io/AMFM_decompy/pYAAPT.html
+
+Reaper is C++ code, and newish. https://github.com/google/REAPER 
+Can download and run it, but now
+reading the documentation I realize it's for studio-quality speech,
+although said to be "fairly robust".  Anyway, converting to 16 bit wav mono...
+
+sox initial10s-2001.au -b 16 -e signed -c 1 initial10s-2001.wav 
+reaper -i inputfile -f f0output -x max-F0 -m min-F0 -a -e 0.01
+
+inputfile must be mono, signed, 16 bit.  16000 is recommended; 8000 works (?)
+
+fast: 8 seconds for 5 minutes, thus 45 times real time
+and, best of all, it handles sw2010, which crashed fxrapt and matlab's yaapt version
+
+Feb 25 
+
+Received from Aaron code for generating speaking fraction and wordcount statistics
+Saved in code/transcript-stats.py.txt
+Output saved in transcript-stats.txt
+
+Feb 26
+
+Plotting 3 pitch tracks: fxrapt, reaper, and praat.  Testing on the
+first 2 seconds of sw02001.wav. They all generally track each other. 
+
+- praat is said to be the best.  It looks great; and doesn't mind
+hypothesizing pitch doubling in regions of creak, which is useful for
+my creaky voice detector.
+
+- fxrapt has a lot of spurious pitch points and pitch doubling.  My
+  midlevel features are designed to be robust to this, and to exploit
+  it for creakiness detection.
+
+- reaper is smooth and conservative.  If I boost -w from the .90
+  default up to .99, I get a few more pitch points, but they don't
+  look particularly correct.
+
+Conclusion: reaper should be fine for the first-pass study of
+individual pitch styles.  Advantages are good quality and handling all
+switchboard files.  Disadvantage is better smoothing, which may weaken
+the performance of my creak detector. 
+
+In future, I should, for various mid-level features, plot the output
+obtained using pitches from fxrapt to that obtained with pitches
+reaper, fishing for differences [2 hours]
+
+Now created a bash script to format-convert all switchboard files,
+  split into left and right: code/reaperize.sh
+
+  sox xxx.sph -b 16 -e signed xxx-l.wav remix 1
+  sox xxx.sph -b 16 -e signed xxx-r.wav remix 2
+
+Note that reaper textfile output is easier to read, but the binary
+file output (produced by omitting the -a option) is slightly less than
+half the size, and probably faster to write.  But for now, go with
+convenience.
+
+In future, I ought to set the bounds differently for male and female.  This
+apparently matters a lot for Praat, perhaps not so much for reaper. To do this: 
+  join list of files to process with the list of files-speakers-etc to get AA
+  join AA with the speaker-inventory to get files and left-speaker genders (BB)
+  join AA with the speaker-inventory to get files and right-speaker genders (CC)	
+  convert BB and CC to commands to a file of calls to sox and reaper; then run it
+  
+Feb 27
+
+Modified lookupOrComputePitch such that, if there is a
+reaper-generated cached pitch version, then use it, otherwise call
+fxrapt in the normal way.  Thus it will still work as documented in
+the normal case, but for Switchboard it will also work.
+
+Feb 28 
+
+Patched up killBleeding, making some assumptions. 
+
+Using the sphfiles subdirectory, tested the entire workflow, first
+creating f0 files, then calling computeStyleParams.
+
+Running code/sph-to-splittrack-wav.sh to call reaper to create f0 for
+everything.  (now replaced with midlevel/src/reaperize.sh)
+
+Feb 29
+
+Running code/sph-to-wav.sh to create the stereo wav files
+
+Finding length discrepancies between the three basic streams: energy
+frames, pitch frames, and cepstral frames. Patched this up by
+truncating each stream to the min length of all, in makeTrackMonster
+and in cepstralDistinctiveness.  Needs to be properly rethought.
+
+Running computeStyleParams
+
+Note that due to various false starts, the first few dozen lines of
+code trainsetStats.csv were redundant, so I hand-deleted them  before
+running deriveISspace
+
+March 3
+
+Running derive ISspace
+
+Created assembleLabels.m, pending fix/test of the feature name code in
+computeStyleParams.
+
+Found that features 1 and 7 were constantly zeros, causing NaNs in the
+  correlations.  need to tweak the ranges in computeStyleParameters;
+  for now handled by patching the code in deriveISspace  **fixed later**
+
+Spotchecking the correlations and the dimensions: look good!
+
+March 4
+
+To join the prosody-based statistics with the transcript-based statistics
+(the latter from Aaron's code) 
+
+  bash code/joinData.sh
+
+March 5 examining the dimensions; after 4 hours, have a good story
+  about the top 8. 
+
+  To summarize the workflow
+  in Matlab: 
+    cd istyles/stats
+    computeStyleParams('trainset.txt', 'd1234trainsetStats.csv');
+  bash ../ code/joinData.sh
+  in Matlab
+     deriveISspace();
+
+
+May 19: see experiment-design-notes.txt
+
+May 21
+
+computed the correlations between model results and human averages for
+the pilot, and they were at zero.  (hand-copied per-dim values from
+matlab to excel)
+
+Re-ran deriveIStyles, and got different extremes than in the previous run,
+
+Thus it's not clear now whether the files analyzed in the paper, and
+thus the results reported, are meaningful, alas!
+
+Need to go back to square: checking the correlations, and then the loadings....
+ those look okay.
+
+Now looking at some that outliers on some dimensions...
+
+2035 is monstrously low on dim 1 ... super prosody... but is it
+really?  an occasional crying baby on the right side ... lots of
+static and clicks
+
+2039 monstrously low on 2 ... Masterpiece Theater ... hugely
+interactive... maybe; highly structured ... yes, very diverse
+perspectives ... perhaps
+
+... looking now at joinedStats.txt...clearly many of the files have 0
+for every prosody-based feature ... but this was documented in
+deriveISpace.m ... really need to fix it.
+
+A program bug meant that all dimension exemplars were wrongly
+identified.  So the loadings were meaningful, but the "exemplars" were
+essentially just random samples
+
+The remaining extreme outliers on the IS dimensions are items for
+which ALMOST all prosodic features are 0 ... most likely another
+manifestation of the same problem.
+
+revived computeStyleParameters.  Run from istyles/code with
+   computeStyleParams('trainset.txt', 'trainsetStats.csv')
+
+works fine for 2001, but for 2008 writes mostly zeros.
+
+Looking at the means, there's clearly a lot of NaNs, so clearly
+the counts of regions of the distribution are mostly zeros. 
+
+Tracing back, this is because the "lengthening" feature has NaNs
+where do they come from? and why only on certain files?
+
+Need to process a just sw02008 with a very simple .fss.
+as a driver for this, in shortTest, run
+        findDimensions('.', 'minicrunch.fss');
+
+Aha, cepstralFlux has NaNs.... doesn't seem to bother
+cepstralDistinctiveness, but it kills lengthening computation. 
+  
+Looking at sw2008, if the last second is included, then in
+computeLengthening the relevantFlux is all NaNs.  Listening, there's
+the sound of the phone receiver being put back in the cradle.  Is this
+the general cause?  
+
+Want to scan all the files in Switchboard, for presence of these Nans,
+
+
+(So that I can then listen to those where they are present.... and if
+it's always in the last second, can just trim those files.
+Alternatively, could use the transcripts and truncate the files where
+the speech ends before the file ends.)
+
+To do this, makeTrackMonster now writes the names of such files
+to badfiles.txt.
+
+2001: some NaNs, OK
+2005: some NaNs, OK OK, noisy  hang up at end: left, then right 
+2006: clean 
+2007: clean 
+2008: BAD loud clunk at end, right track 
+2010: BAD, noisy hang up,  both tracks, worst on l
+2012: BAD, just cut off
+2013: clean
+2014: clean
+2015: clean
+2017: clean
+2018: clean
+2019: clean
+2020 clean
+2020 BAD, hang up, on right first. 
+
+but some with no NaNs also have hang-up sounds: 2001, and 2006, and 2009 a very loud one 
+but 2007 runs off the end,
+
+so there's no clear correlation with the after-speech noise
+
+NB: takes 90 minutes to process 600 Switchboard files on the kitchen computer 
+
+overall, about half have 100% NaNs
+
+temporarily running computeStyleParams with minicrunch, to do this fast
+
+if the final second is the problem, can kill it with
+    sox input output trim 0 -5
+  or 
+    sox input output  fade 0 -1 0.01
+
+NB: in the shortTest directory, chop.sh is a way to prep the .wav files for
+testing the workflow, without doing the full big deal
+
+doing the fade thing reduces NaNs for 2010 to under 1%, which is tolerable
+
+for 2012 and 2020, this kills all NaNs!
+
+So, process all switchboard files to create trimmed versions, then
+rerun computeStyleParams, then deriveIStyles. This is
+code/trimSwitchboard.sh which creates trimmed (suffice "tr") versions
+of .wav files
+
+Note that it seems that everything works just fine if the f0 files are
+a little longer than the wav files, so I've modified
+lookupOrComputePitch so that, if a f0 file is not found, we look for
+it again after deleting the "tr" .  This is a hack, but it avoid the
+need to spend hours newly computing f0 files.
+
+May 23.  Final tidying up. The modifications seem to work: no more bad
+files.  Running computeStyleParameters again; will take about 16 hours
+on the kitchen computer. 
+
+May 25 looking at the exemplars of the new dimensions.  3243 is an
+outlier on dim 1, poor audio quality, but not listed in rating_tab.csv.
+
+recording notes in editedExemplars.txt
+
+Looks like the first 8 dimensions make sense!  Need now to verify somehow.
+
+As a change of pace, looking for the two most similar sides ... they
+are 2199-right and 2199-left: listening to them, the two speakers are
+well balanced.  Also 3142, left and right (by all dimensions) 2692 (by
+top 8 dimensions).
+
+Now the most similar not being the two sides of the same conversation:
+
+- 4280-l and 4270-r based on all dimensions:
+  4280 MM childcare, l starts interviewer-ish
+  4270 MM juries, r is a young guy, a bit pompous
+  both are very middle-of-the-road speakers, in both cases
+  4270-r :  2.6  0.5 -5.7 -0.2   -0.3 -2.1  0.1  1.3  
+  4280-l :  2.1 -0.2 -5.8 -0.3    0.5 -1.6 -1.6  0.9  
+  a little awkward/stiff, very rambling, a little interactive
+
+- 2283-l and 2389-r for the top 8 dimensions
+  2283 is FM, gardening, very middle of the road
+  2389 is FF, women's issues, very agreeable people, r is "interviewer" style
+        2389-r : -3.5 -4.0 -2.1  0.3   -1.1  0.0 -0.0 -0.6  
+        2283-l : -3.7 -4.4 -1.9  0.8   -0.9  0.6  0.1 -0.6  
+these both start interview style, then open up 
+   -- they are lively/engaged, speaking, rambling, monolog-ish,
+      feeling, slightly detached, personal/positive 
+
+Conclusion: a similarity metric in this space is reasonable. And maybe
+just the top 8 is better ... the rest (presumably) being more
+noise-like.  Could collect human distance judgements and use that to
+decide how many dimensions to consider to best match the human
+judgments.
+
+
+
+Observation: dimensions 2, 3, 4, 7 are all things I saw in the earlier
+run, even with the buggy data. 
+
+dimensions 6 and 8 look similar ... how do they differ?
+
+Thoughts:
+- these 8 dimensions would look plausible in a paper
+- these 8 dimensions would look original in a paper
+- these 8 dimensions would probably be fine for annotators
+
+Dimension 1:
+  hi: awkward, stiff
+  lo: lively, engaged
+Dimension 2:
+  hi: inte speaking
+  lo: self speaking
+Dimension 3:
+  hi: clearly delineated topics
+  lo: rambling
+Dimension 4: 
+  hi: monolog
+  lo: interactive
+Dimension 5:
+  hi: fact-oriented
+  lo: feelings-oriented
+Dimension 6:
+  hi: detached, philosophical, analytic, long view 
+  lo: personal(?), descriptive, current activities, here-and-now
+Dimension 7:
+  hi: left side boring, right side uninterested
+  lo: right side boring, left side uninterested
+Dimension 8:
+  hi: impersonal, negative
+  lo: personal, positive
+
+see editedExemplars.txt for illustrations
+
+For selecting clips for experiments ... select one decently-high and
+one decently-low on each attribute.  Eyeballing these 16 this
+suggests, from the training data, shows that as a set, the 16 provide
+a wide distribution on each one of the dimensions (which is to be
+expected, since they're orthogonal).
+
+May 27, 2020 
+
+Looking at some which are outlier-suspicious, i.e beyond 2.5 stds on
+some dimension, e.g.
+  2221 on dims 2, 7, 8 ... but it really is extreme on all of those
+     and it's above 2.5 std devs, but not above 3 
+  3420 on dims 7 8, hyper personal, hyper one-way 
+     and it's above 2.5 std devs, but not above 3 
+  2227 is beyond 4 std devs on topic-structure, but really is super topic-jumpy
+  2979 is beyond 4 standard deviations on lots ... volume drops halfway through
+  2583 is beyond 4 std devs, but is truly a monolog
+  2822 is beyond 3.5. std devs, but is truly one-sided
+  2913 is beyond 4.5, but is truly very interactive  
+  4926 is beyond 5.0 on dim 7, but is truly very boring/unintersted 
+
+so set threshold for pruning it as excessive to 5.5 standard deviations.  
+
+The conversation closest to the origin is 2010 ... sounds very normal,
+not a stand-out in any way, as you'd expect. 
+
+  
+
+looking at within-speaker and cross-speaker differences.
+The within-speaker differences are less, especially for the higher dimensions
+
+As a way to judge on which dimensions speakers tend to be consistent ... 
+looking at the same-speaker / diff-speaker stdev ratios
+ dim 4: (monolog/interactive) seems to be a relative stable property of people
+ dim 7: (which speaker is more boring) is less so, i.e., more partner dependent
+Previous work would, however, suggest it's dim 1 or dim 2 that would be more stable 
+ ... but overall, it's not much: explains (I think) little of the variance.
+ Influence of the partner is probably huge.  Also the topic, and the time of day ...
+
+Might quantify this ... what's the standard deviation of the set of
+conversations with the same partner, compared to the standard
+deviation of the set of conversations by the same person.
+
+May 28 ... wrote code compareWithSubsets, and discovered, sadly, that
+the dimensions are not stable... the first dimension is fairly stable
+after seeing half the data; the others not at all.  So the top 8
+dimensions are one possible view of the interaction space, but
+certainly not a unique or best view.  Note that it now produces nice graphs for this. 
+
+Another investigation: reducing the number of features from 96 to o20
+makes the convergence look much stronger much faster... so I may have
+too many features for the amount of data I have.
+
+So, when I switch to 30-second clips, things will likely be better. 
+
+
+Preparing to lookup speaker information etc:
+
+code/prepMetadata.sh writes it to metadata.txt
+
+
+For 1422 male sides and 1320 female sides
+  male means       0.4 -0.1 -0.8  0.0    0.2  0.0 -0.2 -0.4  
+  female means    -0.4  0.1  0.9 -0.0   -0.2 -0.0  0.2  0.4  
+
+These are new dimensions, after excluding those with excessive outlierhood,
+but they suggest
+  dim 1: males are stiffer, less engaged
+  dim 2: males speak a trifle more 
+  dim 3: males ramble more
+  dim 5: males are more facts-oriented
+  dim 7: males are less boring (need to revisit)?
+  dim 8: males are more personal/positive (need to revisit) ?
+
+
+birthyear-score correlation for dim 1 is -0.07  younger folk are more engaged
+birthyear-score correlation for dim 2 is 0.12   younger folk let the other talk more 
+birthyear-score correlation for dim 3 is -0.09  younger folk ramble more 
+birthyear-score correlation for dim 4 is 0.04
+birthyear-score correlation for dim 5 is 0.15   younger folk are more fact-oriented
+birthyear-score correlation for dim 6 is 0.05
+birthyear-score correlation for dim 7 is 0.06
+birthyear-score correlation for dim 8 is 0.06
+
+These corraborate the meanings of dimensions 1-3, at least 
+
+Report also values in terms of effect size (std deviations M/F)
+And std deviations per year of age
+
+May 29, 2020
+
+Realized I probably should have done smoothing on the word
+counts/fractions generated by Aaron's code ... but going forward,
+not likely to use those anyway.
+
+It would also be a hassle to convert it to work for 30-second clips.
+
+And adding more features hurts convergence.  Although it would be easy
+and nice to add some things, in particular
+- (LIWC-inspired):  articles, negations, words > 6 letters
+- affective values (ANEW, MPQA@Pitt, or Bing Liu @ Illinois)
+
+Redoing the PCA without the lexical-count features: 8 fewer features,
+the resulting dimensions look not much changed.
+
+So going forward, do without those, to enable "independent"
+verification by examining for various words the ratios of their
+frequencies in conversations high on the dimenension vs low on the
+dimension, for all dimensions.  And/or use words with highest ttest
+values.
+
+
+mse when predicting mean is 7.12
+mse when predicting gender mean is 6.98
+mse when predicting young/old means is 7.07
+
+ matched comparison on the 110 sides for which each has at least 20 other calls by this speaker:
+mse when predicting speaker mean is 4.42
+mse when predicting mean is 7.02
+
+the least consistent speaker is 1120 with mean std 2.19
+the most consistent speaker is 1352 with mean std 1.45
+
+ matched comparison on the 110 sides for which each has at least 20 other calls by the other speaker:
+mse when predicting mean of partners of partner is 5.74
+mse when predicting mean is 7.02
+
+... so gender explains 2% of the variance,
+   age 1%
+   the individual 32% if have 20+ other samples, 
+    ... but explains nothing if only 1 other sample, 6% if exactly two other samples, 
+   the partner explains 18% if ditto
+
+question: do speakers adapt toward the mean of the other's behavior?
+I can't answer this, since all my features represent joint behavior patterns.
+
+What are the partner effects?  I can't model these either.  But I can
+try to predict the behavior of this speaker in this conversation, by
+reference to other speakers who have talked with the same partner (see above)
+
+The most consistent speaker is 1352 ... perhaps not coincidentally,
+she was always was the A speaker; always talks a lot, always
+rambling...
+
+
+Which dimensions are most person-stable?  That is, for which is the MSE
+reduction ratio best improved by using the speaker's other conversations?
+
+mse when predicting speaker mean is 4.42
+                      12.06 6.65 7.00 2.34   2.66 1.52 1.59 1.55
+mse when predicting mean is 7.02
+                      18.48 14.98 9.80 3.60   3.01 2.12 1.78 2.39
+reduction in unexplained variation:
+	              .65   .44  .71  .65     .88   .72  .89   .65
+     thus it's dimension 2, amount of speaking, that's most person-constant 		      
+
+
+
+Which dimensions are most partner-stable?  That is, for which is the
+MSE reduction ratio best improved by using the speaker's partner's
+partner's behaviors?
+
+mse w mean      16.39 10.21 7.36 3.40   2.64 2.06 1.67 2.16
+mse w ppinfo    18.48 14.89 9.87 3.60   3.01 2.12 1.77 2.39
+ratio             .89   .68  .75  .94
+     again, dimension 2 is the strongest-affected by the interlocutor
+   
+
+
+Okay ... now about to start conversion to 30-second clips... first a backup,
+  copying "code" directory to "whole-files-only-code"
+
+Filestructure modification: the stats files now have an additional
+field, for the clipnum
+
+Modified computeStyleParameters.m; looks okay
+
+May 30, 
+
+Modified deriveISpace.m, seems okay.
+
+stats/trainset-stats.csv has 32084 lines!
+
+Looking at the results... looking at some outliers pruned as excessive ...
+sw4095@3:00 is an outlier on dim 8 ... but it is in fact over-the-top personal
+
+thinking it's better to prune based on outlier source (pre-rotation) features...
+
+looking at the results ... sw 04691 is an outlier on has-turn, but he is truly giving her a lecture
+
+Looking at histograms of the features, most are normally distributed,
+but many are skew and essentially always zero.  Which makes sense,
+since they're based on counts, and read in from a file printed with
+%.3f ... so boost computeStyleParams to use %.5f and re-run.  duh!
+
+clip size should be 30 seconds, because
+- that will make sense for the labelers, and not be intimidating
+- the labelers won't get bored with that amount of data
+- they labelers will be able to complete most of the 16 judgments in that time
+  and thus not a bunch of no-stimulus time for the memory to fade
+- yet they'll get enough info to feel they can decide. 
+
+Looking at results ... predicting gender mean, and young/old means
+give almost no benefit, whereas before they did, when predicting on a
+per-file basis.  Why? Most likely because, with much smaller samples
+(30 sec), there are much more often zeros for the features
+representing the ends of the distributions (2.4 to 10.0 standard
+deviations), exacerbated by the %.3f issue noted above.  So maybe that
+problem will go away.
+
+June 1, 2020
+
+Returning to the question of the outliers ...  for some regions of the
+distibutions, e.g. prosodic dim 1 beyond 2.4 deviations, the
+distribution is very skew; almost all sides have zero there.  For
+these, we might adjust the theshold, or take the log of the value,
+which is, after all, count-based.  However most of the others are
+normally distributed, so maybe it's okay to not mess with it. 
+
+Listing to some with outlier values ...
+  the one on overlap is truly very enthusiastic
+  the others are all on has-turn features
+  or bnp/meta-comment ... which is for 2979, which is a strange conversation,
+    exchanges of musings ... 2093, 2979
+
+Listening to some of the Warning-flagged conversions ... most are for
+dim 7, and the conversants are really vary flat in tone 
+
+Conclusion: don't worry about it for now.
+
+the most variable speaker is 1236 ... rather quiet, easygoing, sometimes zero rappor
+the most consistent speaker is 1366, who is almost always the B speaker,
+ skptical, negative, unengaged, baby crying in background, and has near-consecutive
+ numbers, so she make have made them mostly in one afternoon
+
+Looking to find characteristic words for clips that exhibit one
+extremes of an istyles dimensions.  More specifically, print out words
+which are far more frequent/infrequent for those clips that in
+Switchboard in general.
+
+Once I get all these ratios, I will eyeball them.  For the paper, I may
+want to report some p-values, which I can do if I have 
+- the total count of words in Switchboard
+- the total count of the word x in switchboard
+- the total count of words in the specified zone (pos, neg) for dim D
+- the count of word x in the zone
+Of course, a massive Bonferroni correction may be appropriate
+
+to get all the counts in Switchboard,
+  cd nigel/partial-comparisons/swbd-transcripts  (from piconepress.com)
+  cut -f 4 -d ' ' */*/*word* | sort | uniq -c | sort -n > wordCounts.txt
+to get the total count of all words in switchboard
+  cat */*/*word* | wc
+  4051206  (includes 892223 "silence" tokens, and 74289 blank lines)
+
+See code/wordFrequAnalysis.m, and the files in istlyles/wordstats
+
+After 5 hours of work, it's all working. Now I'm ready to look at the dimensions.
+Bearing in mind that this is based just on discs 2 and 3.
+
+Looking at the loadings now:
+ dim 1+ reluctance/silence
+   common words: uh, problem, death, terms, should, trying, her, them
+   rare words: I'm, we, she, he, laughter, right, yeah, oh, um-hum
+ dim 1- engagement
+   common: TIer, hello, hi, Saturday, place names, favoirte, cool,
+   rare: understand, agree, exactly, enough, pay
+
+ dim 2+ other speaks more
+    common: money, should, true, um-hum, uh-huh, oh, right, yeah
+    rare: we, you, know, think 
+ dim 2- self speaks more
+     common: Amiga, IBM, computer, taxes, gun, cars, cost, dollars, paid, crime
+     rare: uh-huh, uh-hum, laughter, probably 
+
+ dim 3+ enthusiastic, no turn holding, nor turn taking, positive, structured, topic-structured 
+   common: blood, mandatory, helping, cool, clothes, baseball, God; policies, reviews, pension, govenrment, utilities, forms, 
+   rare: I'll, I'd, will, having, has, um-hum, um
+ dim 3- rich in turn holding, and turn-taking, but not BCs  rambling??
+    common: Amiga, movies, walk, liked, wonderful, watch, TI, thousand, I'll, gardening, flowers, vegetable, plants, beans
+    rare: think, something, things, very, people, guess
+
+ dim 4+ this speaker making empathy bids, yielding turns,  minor third cue giving, fillers, other gets long turns, self short: interviewer, self has turn but only short
+  common: jeans, dress, wear, brother, failies, absolutely schools, usually, parents, (personal)
+  rare: feel, talking, never, interresting, dollars, country
+
+ dim 4- minor-third receiving, late peaks: interviewee, self has long turns
+   common: doubt, death, felt, guys,
+   rare: we've, he's, i'd, most 
+
+ dim 5+ topics continue, positive: going well
+    common: locations, hi, death, I'm, she's, you've
+    rare: with, up 
+
+ dim 5- topics die, silence, emphathy bids + indifference: one is bored, or both
+     common: dorm, jumped, planted, cool, chanel, seventies, scary, apartment, beginning, father, remember (nostalgia?)
+     rare: nice, talking, interesgin, live, does, having, yes (here and how?)
+
+
+Jun 2
+
+completed the run on discs 3 and 4, and concatenated everyghing as
+  stats/trainStats.csv
+
+ran deriveIStyles.  notig that Dim 1 is kindof stable after half the
+data (cosine above .66), but Dim 3 and 4 not there until 90% of the
+data, and dim 2 never consistently there (guessing it oscilates over
+different kinds of things associated with speakerhood)
+
+probably want to get rid of 3243, since it's dominating the plus side
+of dim 3.
+
+Jun 12
+
+completed IRB submission
+
+Jun 18
+
+Working on the LSA abstract, computing dimensions on the features
+relating to turn-taking patterns only. 
+
+Which features are lowest on TT-style dimension 1?
+   i.e., have lots of turn taking 
+365 baseball -1.99
+307 football -1.55
+339 tv programs 
+348 movies 
+319 basketball
+360 fishing 
+362 golf
+
+
+
+
+and highest
+  i.e., have little turn taking 
+367 ethics in government 
+338 soviet union
+301 aids
+342 universal health insurance 
+353 public education
+309 puerto rican statehood
+322 capital punishment 
+
+Looking in release_2_table_updates.txt, 3243 is called out a poorly recorded,
+so I deleted it from stats/trainset.txt; so if I ever rerun computeStyleParams.m,
+it will be gone. 
+
+*** note that in the LSA abstract, (-) refers to the positive side
+    loadings, and (+) to the negatives.  Way confusing, but will make
+    more sense to the readers
+
+in rating_tab.csv, topicality is the third field, on a scale from 1
+(on topic) to 5 (off topic).  This is very skew, with two thirds rated
+1.  Might look at this for the LSA abstract, but there's no space to
+describe the results anyway.
+
+POS  are the strong t-t ones
+
+4660 1:30 - 2:00 very pos, low tt, is a call waiting hiatus
+3243 is all excludable, since only one track of audio
+2418@5:00 someone at the door 
+2918@5:00 a monolog on crime and punishment, with her just "uh-hm"
+2634@0:30 gun control, monolog
+
+okay, the super extreme positive ones are outliers ... back off to
+some more modestly positive  ones
+
+2062@pension: kind of monolog-y
+
+now for some modestly negative ones: 
+
+2624@1:00 engaged, blurting out stuff, joking
+
+2340@0:00 friendly, personal, self-revealing 
+
+3586@0:00 self-interruption, laughing, stream-of-consciousness
+
+
+tt-isratios1lo.txt:  yeah, I , you, wow, okay
+
+tt-isrations1hi.txt: system, uh, uh, the, sort 
+
+
+June 26: Callhome English
+  comparisons-partial/en-callhome
+  nice wget -w 3 -r -t 10 http://media.talkbank.org/ca/CallHome/eng/0wav/ -o log
+
+July 14, examining the distributions
+  dim 1 rather skew ... on the high side, unengaged, goes up to a max of around 4 stddevs, 14, who's on hold
+     hi want +10 95%?
+     on the low side, goes way low; need 4 std devs for an unambiguous percept, but weakly present around 3
+     low want -13 95%?
+
+  dim 2 very symmetric, percepts ambiguous at 2 std devs (6), clear at 3 std devs (9), but then it's always the same clip,
+     since has tight tails 
+    hi want 8, low want -8; 95%?
+
+  dim 3: the Amiga conversation is around -3 standard deviations, no others there, nor at 4?
+     actually the curve looks pretty short beyond -6, which is 2 std devs;
+     but that's adequate here for a strong judgment
+     low want -7  95%?
+     hi want 10  95%?
+
+  dim 4: looks symmetric
+  dim 5: skew: long tail to the low side: giving justifications
+  dim 6: symmetric
+  dim 7: symmetric, but a huge outlier on the pos side
+  dim 8: slightly skew to right: negative feelings 
+  
+
+July 14
+
+Thus I decide to pick exemplars, not as extremes, nor as some
+multiple of the standard deviations, but as percentiles.  Modified
+pickClipsForHumanSubjects() to do it this way.  Saved results as
+percentileBasedExemplars.txt .
+
+July 23
+
+wrote code to write sox commands to chop out exemplars to show
+subjects, including near-origin anchor clips. (still just on the
+training data)
+
+istyles/wordstats 
+
+rented LIWC for 30 days, as nigel@utep.edu
+
+Looking at the LIWC categories, most seem to make sense
+
+Rewriting the wordFreqAnalysis code to use the top/bottom 10 percent
+on each dimension, and to exclude silence
+
+remember, once I get useful results (written into the "stats"
+subdirectory) copy them over to the "wordstats" subdirectory, so they
+dont' get clobbered
+
+recomputing swbdCounts.txt and swbdTotal.tex
+
+  cat ../../comparisons-partial/swb-transcripts/*/*/*word.text | awk '{if ($4 != "[silence]") {print $4}}' > swbdWords.txt
+  wc -l swbdWords.txt > swbdTotal.txt
+  sort swbdWords.txt | uniq -c > swbdCounts.txt
+
+remember to sort -n on isratiosxxx.txt to view them 
+
+takes 3 hours to process it all 
+
+July 24
+
+listening to the clips around percentile 1 on dimension 1
+... most  at 0.025 through 0.15 are decently "both engaged",
+   but 0.0125 is crashingly not... perhaps since this one also is strong on dims 3 and 6, so maybe obscured
+... .9985 clearly not engaged
+
+anything lower than 3rd percentile and above 97the percentile are
+decently informative; going up to higher extremes is not hugely better
+5 percentile and 95 percentile are rather weak
+
+For dim 2, 3% and 97% are clearly one-sided, but 2% and 98% are really clearly also active listening
+
+Dim 3 hi: philandering politicians (twice), sinking houses (99.5),
+underprepared students 99.8, a movie 99.9 (not real negative) 99.95 (mixed pos and neg; judging a movie)
+95 need to spend more family time; only weakly negative.
+
+critical/judgmental
+
+Dim 3 low: 
+
+percentile 0.05: non-judgmental: football teams don't have to win
+percentile 0.10: ditto, for college football teams 
+percentile 0.20: very postitive, regarding a product, also an employer
+percentile 0.50: the process of choosing a car; a Toyota, balanced
+percentile 1: funny-but-forgivable local politics: refraining from judging
+percentile 2: forgiving college students for lack of interest in politics: not judging
+percentile 3: why kids need parents and family environments
+
+non-judgmental/forgiving/balanced view
+
+generally, reason, perspective, decisions, likely, trend, percentage, convinced, aside, conditions, discussion, practical, opinions, frankly, pattern, version, clearly, closely, interestingly, limitations (but also some way-positive terms, like fabulous)
+
+
+July 28
+  modifying deriveISspace to alternative compute and save the tranformstion to a space
+  or to reuse an existing one
+
+  (will also need to modify computeStyleParams)
+
+  test the modified version by seeing if sox-commands.sh it now writes is the same as the old one
