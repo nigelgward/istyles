@@ -105,9 +105,9 @@ construction dimension or to an interaction style dimensions.
 %==========================================================
 \section{Corpus Preparation }
 
-Create a directory somewhere with lots of space, refered to below as
-{\tt motherDirectory}, and copy the Switchboard data discs there one
-by one, naming the subdirectories {\tt disc1} \ldots {\tt disc4}.
+Find a disk with 60 GB available, create a directory, refered to below
+as {\tt motherDirectory}, and copy the Switchboard data discs there
+one by one, naming the subdirectories {\tt disc1} \ldots {\tt disc4}.
 
 Create {\tt wav}-format copies of each audio file using {\tt
   code/sph-to-wav.sh} .
@@ -124,24 +124,28 @@ Run {\tt prepMetadata.sh}.
 %==========================================================
 \section{Building the Model}
 
-Open Matlab and change to the {\tt stats} subdirectory.. 
+Open Matlab and change to the {\tt stats} subdirectory, creating one
+if necessary.
 
-Run {\tt computeStyleParams.m('stats/trainset.txt','trainStats.csv')}
+Run {\tt computeStyleParams.m(splits/trainset.txt','trainStats.csv')}
 to create the features for all files in the training set.  The output,
 here {\tt trainStats.csv}, is sometimes called a PCB file, as it
 contains features based on prosodic-construction bin counts.
 
-This will take many hours, so if it crashes, be prepared to look at
-{\tt trainStats.csv} to see how far it got, and edit the code to just
-append stats for the files not already processed.
+This will time (12 hours on a 8GB 3.6GHz machine), so if it crashes,
+be prepared to look at {\tt trainStats.csv} to see how far it got, and
+edit the code to just process the conversations not already processed;
+the function will conveniently append stats for those new
+conversations.
 
 This file has three hidden dependencies, reading data from hardcoded
 filenames.  The first two, {\tt fsfile} and {\tt rsfile} specify how
 to compute the prosodic dimensions, as described in the midlevel
-documentation. The third is {\tt sifile} is used to specify the
-bins. Usually this should be held constant for all analyses, unless
-you want to define not only a new interaction space but also to
-redefine the basic features used. 
+documentation. The third is {\tt sifile}, listing the standard
+deviations of the prosodic dimensions, as derived from the pbook data,
+and is used to specify the bins. Usually this should be held constant
+for all analyses, unless you want to define not only a new interaction
+space but also to redefine the basic features used.
 
 \medskip
 Now run {\tt deriveISspace('trainStats.csv', true,
@@ -154,7 +158,7 @@ also pops up a figure that will go in the paper (when {\tt
 This will also write several files, notably:
 
 \begin{itemize}   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-\item {\tt loadingsTables.txt}, written to {\tt stats} shows, for each
+\item {\tt loadingsTables.txt}, written to {\tt stats}, shows, for each
   dimension (each interaction-style dimension) the loadings on the
   behavioral features (the prosodic-constructions-binned features).
 \item many files with names starting with {\tt isratios}.  These can
@@ -162,22 +166,22 @@ This will also write several files, notably:
   Once computed, it's nice to save them in a safe place, for example
   by moving them all to {\tt wordstats}. 
 \item many files with names starting with {\tt idimWords}.  These can
-  be examined with LIWC.
+  be examined with LIWC.  They also should be moved to {\tt wordstats}.
 \item {\tt sox-commands.sh}, a script which can be run with {\tt bash}
   to generate various audio fragments.  These can then be listened to
-  to help understand the meaning of the various dimensions.  Once
-  created, it's nice to move them somewhere safe, e.g. {\tt
-    exemplars}.  The script also creates some anchor stimuli, to use
-  in the human-perceptions experiment. 
+  to help understand the meaning of the various dimensions.  The
+  script also creates some anchor stimuli, to use in the
+  human-perceptions experiment.  Once created, it's nice to move these
+  all somewhere safe, e.g. {\tt exemplars}.
 \end{itemize}
 
 %==========================================================
 \section{Applying a Model to New Data}
 
 This is to be done, for example, when choosing clips to use for the
-experiment, which should, of course, be taken from data unseen in
-training the model or interpreting the dimensions: thus from held out
-testset data.
+experiment, which should, of course, be taken from data not used in
+training or interpreting the dimensions: thus from held out testset
+data.
 
 ** not tested yet **
 
