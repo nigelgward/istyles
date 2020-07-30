@@ -923,3 +923,20 @@ July 28
   (will also need to modify computeStyleParams)
 
   test the modified version by seeing if sox-commands.sh it now writes is the same as the old one
+
+July 29
+  reran computeStyleParams, after changing 32 seconds to 30-seconds, as fragment size 
+  documented the workflow, in doc/istyles.tex
+  created a github repository
+  re-generated the exemplars, now in trainIStyles/exemplars
+  verified, by eye, that the dimension loadings are not significantly changed
+
+TODO: 
+  re-listen to the new exemplars; finalize attributes
+
+  re-generate the word counts
+
+  run computeStyleParams on the test data
+
+  
+  

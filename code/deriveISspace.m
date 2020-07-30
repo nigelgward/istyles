@@ -27,7 +27,7 @@ function deriveISspace(PcbStatsFile, freshlyNormalize, ISNormRotStatsFile, outpu
   	  size(sstats), sum(sum(isnan(sstats))) );
   featNames = assembleLabels();   % feature names 
 
-  [sstats, sourceInfo, featNames] = pruneJunk(sstats, sourceInfo, featNames);
+  %[sstats, sourceInfo, featNames] = pruneJunk(sstats, sourceInfo, featNames);
   %%[sstats, sourceInfo] = pruneExcessives(sstats, sourceInfo, featNames);
   fprintf('Reporting results over %d clips\n', size(sstats, 1));
 
@@ -45,6 +45,9 @@ function deriveISspace(PcbStatsFile, freshlyNormalize, ISNormRotStatsFile, outpu
     variExplained(latent);
   else
     load(ISNormRotStatsFile);
+    fprintf('size(sstats) is %d %d\n', size(sstats));
+    fprintf('size(fmean) is %d %d\n', size(fmean));
+    fprintf('size(fstd) is %d %d\n', size(fstd));
     normalizedf = (sstats - fmean) ./ fstd;
     score = normalizedf * coeff;
   end
@@ -58,7 +61,7 @@ function deriveISspace(PcbStatsFile, freshlyNormalize, ISNormRotStatsFile, outpu
   writeLoadingsTable(coeff, featNames, loadingsHeader, outDir);
 
   writeISexemplars(score, sourceInfo);
-  writeScores(score, sourceInfo, basedir);   
+  writeScores(score, sourceInfo, outDir);   
   
   metad = assembleMetadata(basedir, sourceInfo);
   
@@ -72,7 +75,8 @@ function deriveISspace(PcbStatsFile, freshlyNormalize, ISNormRotStatsFile, outpu
   findClipsNearOrigin(score, sourceInfo, metad, soxfd);  
   %%  writeSomeClosePairs(score, sourceInfo);  % a trifle slow 
   examinePredictability(score, metad);
-  pickClipsForHumanSubjects(score, sourceInfo, metad, soxfd);
+  pickClipsForExamination(score, sourceInfo, metad, soxfd);
+  pickClipsForHumanSubjects(score, sourceInfo, metad);
 
   %% compareWithSubsets(coeff, normalized);  % a trifle verbose
   %% computeTopicAverages(score, metad);
@@ -121,7 +125,7 @@ end
 
 
 %% write, also display some statistics and some samples as a sanity check
-function writeScores(score, sourceInfo, basedir)
+function writeScores(score, sourceInfo, outDir)
   maxTracksToShow = 5;  
   nclips = size(sourceInfo,1);
   tracksToShow = min(nclips, maxTracksToShow);
@@ -138,7 +142,7 @@ function writeScores(score, sourceInfo, basedir)
     fprintf('%s : %4.1f %4.1f %4.1f %4.1f   %4.1f %4.1f %4.1f %4.1f  \n', ...
 	    sourceString(track, sourceInfo), score(track, 1:dimsToShow))
   end
-  sfd = fopen([basedir 'scores.txt'], 'w');
+  sfd = fopen([outDir 'scores.txt'], 'w');
   fprintf(sfd, 'scores %s', datestr(clock));
   for track = 1:nclips
     fprintf(sfd,'%s : %4.1f %4.1f %4.1f %4.1f   %4.1f %4.1f %4.1f %4.1f  \n', ...
@@ -367,8 +371,40 @@ function warnReExcessives(score, sstats, sourceInfo, featNames)
 end
 
 
+
 %% for the experiments, apply this to tracks NOT in the training set 
-function pickClipsForHumanSubjects(score, sourceInfo, metad, soxfd)
+%% each line of the predictions will contain
+%% mturk-set1-06.wav, dim1score, dim2score, dim3score, ..., dim8score,
+%%    , clip source, dimension chosen for, high/low, percentile
+%% note that the anchors are generated above, in findClipsNearOrigin
+function pickClipsForHumanSubjects(score, sourceInfo, metad)
+
+  mturkfd = fopen('sox-for-mturk', 'w');
+  clipPredsFd = fopen('predictions-for-mturk', 'w'); 
+
+  for stimulusSet = 1:3
+    fprintf('writing stimulusSet %d\n', stimulusSet);
+    permutation = randperm(16);
+    for dim=1:8
+      for pole = [0 1]
+	percentile = 1 + 98 * pole;  % 1 or 99
+	dither = (stimulusSet - 2) * .1;
+	exactPercentile = percentile + dither;
+	stimFileName = sprintf('stimulus-%d-%2d.wav', ...
+			       stimulusSet,  permutation(2*dim + pole));
+%	xxx pick clip closest to exactPercentile
+	fprintf(mturkfd, 'sox %s %s trim xxxx\n', xxx, stimFileName, yyy);
+	fprintf(clipPredsFd, '%s, ', stimFileName);
+%	fprintf(clipPredsFd, '%.3f, ', score-for-this-clip
+      end
+    end
+  end
+  fclose(mturkfd);
+  fclose(clipPredsFd);
+end
+
+
+function pickClipsForExamination(score, sourceInfo, metad, soxfd)
   Eight = 8; 
   for dim = 1:Eight
     fprintf(soxfd, '# For dim %d: \n', dim);
@@ -480,12 +516,12 @@ function examineAB(score, metad)
 	  length(aDimvals), length(bDimvals));
   fprintf('  A means    %4.1f %4.1f %4.1f %4.1f   %4.1f %4.1f %4.1f %4.1f  \n', mean(aDimvals));
   fprintf('  B means    %4.1f %4.1f %4.1f %4.1f   %4.1f %4.1f %4.1f %4.1f  \n', mean(bDimvals));
-  fprintf('  p values ');
-  for dim = 1:8
-    [h,p] = ttest(aDimvals(:,dim), bDimvals(:,dim));
-    fprintf(' %.3f', p);
-    end 
-  fprintf('\n');
+%  fprintf('  p values ');
+%  for dim = 1:8
+%    [h,p] = ttest(aDimvals(:,dim), bDimvals(:,dim));
+%    fprintf(' %.3f', p);
+%    end 
+%  fprintf('\n');
 end
 
 

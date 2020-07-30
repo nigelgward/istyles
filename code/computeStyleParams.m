@@ -38,7 +38,7 @@ function computeStyleParams(toProcessListFile, statsFile)
   %%subDirList = {'shortTests'};   %% for testing
 
   nDimsToProcess = 12;  
-  featurelist =  getfeaturespec(fsfile);
+  featurelist =  getfeaturespec(fsfile);   %% midlevel/flowtest/pbook.fss
   load(rsfile);     % get coeff, nmeans, rotation_provenance, etc., 
   provenance = strcat('from computeStyleParams using ', rotation_provenance);
   prosDimSigmas = csvread(sifile);
@@ -83,7 +83,7 @@ function computeAndWriteStatsOnDistribs(rotated, sigmas, nDimsToProcess, ...
   for clipNum = 1:nclips
     startFr = 1 + clipSizeFr * (clipNum - 1);
     endFr = startFr + clipSizeFr;
-    clipBit = rotated(startFr:endFr,:);
+    clipBit = rotated(startFr:endFr - 1,:);
     clipStats = computeStatsOnDistributions(clipBit, sigmas, nDimsToProcess);
     writeDistributionStats2(dialogNum, side, clipNum, clipStats, provenance, statsFile);
   end
