@@ -931,12 +931,45 @@ July 29
   re-generated the exemplars, now in trainIStyles/exemplars
   verified, by eye, that the dimension loadings are not significantly changed
 
+July 30
+   I worked through the QuestionPro mock-up
+   it took me 16 minutes, without reading the instructions, etc. 
+   maybe add note that "volume varies"
+   maybe disable "next" until after 30 seconds
+   many clips are rich in both facts and reasons
+   the "comments" field is not visible until after scrolling.
+   It's not clear what sorts of comments are being invited
+   the meaning of "modest" is unclear
+   need to fix the "focal speaker" ambiguity
+
+   my daughter did the same
+   it took her 30 minutes
+   maybe stress that impressions should be based on listening to the behavior of both speakers
+   she wanted clarifications:
+   - hover text would be nice 
+   - also better up-front explanations
+   - also examples (e.g. judgmental), but then we have to caution them that it's not word-based
+
+   should move the asymetric questions to the top (dims 2 and 4)
+   
+   odd observation: on dim 3, the testset dialogs are more judgmental.  Odd.
+
+   regarding the "focal speaker" ...
+       pole=0/lo, track=left, dim=2, then "left speaker mostly talking"
+       pole=1/hi, track=left, dim=2, then "right speaker mostly talking"
+       pole=0/lo, track=right, dim=2, then "right speaker mostly talking"
+       pole=1/hi, track=right, dim=2, then "left speaker mostly talking"
+   but this is a hassle, so only use track=left intances as stimuli,
+       and then "focal" simply means " left
+   only using left tracks also avoids the danger of presenting the same clip twice,
+      once for r and once for l
+
+
 TODO: 
   re-listen to the new exemplars; finalize attributes
 
   re-generate the word counts
 
-  run computeStyleParams on the test data
 
   
   

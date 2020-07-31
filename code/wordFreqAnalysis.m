@@ -16,7 +16,8 @@ function wordFreqAnalysis(score, metad)
       end 
       sidesToUse = metad(clipsubset==1,:);
       bashFilename = writeWordStatsBash(dim, direction, sidesToUse);
-      system(['bash ' bashFilename]);
+      system(['c:\cygwin64\bin\bash.exe ' bashFilename]);   
+      %%system(['bash ' bashFilename]);   % 'c:\cygwin64\bin\bash.exe'
     end
   end
 end

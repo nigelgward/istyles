@@ -33,7 +33,7 @@ function deriveISspace(PcbStatsFile, freshlyNormalize, ISNormRotStatsFile, outpu
 
   cmatrix = corrcoef(sstats);
   fprintf(' found %d NaNs in the correlations\n', sum(sum(isnan(cmatrix))));
-  writeCorrelations(cmatrix, featNames, 'outDir', 'correlations.txt');
+  writeCorrelations(cmatrix, featNames, outDir, 'correlations.txt');
 
   if freshlyNormalize
     fmean = mean(sstats);
@@ -45,9 +45,9 @@ function deriveISspace(PcbStatsFile, freshlyNormalize, ISNormRotStatsFile, outpu
     variExplained(latent);
   else
     load(ISNormRotStatsFile);
-    fprintf('size(sstats) is %d %d\n', size(sstats));
-    fprintf('size(fmean) is %d %d\n', size(fmean));
-    fprintf('size(fstd) is %d %d\n', size(fstd));
+%    fprintf('size(sstats) is %d %d\n', size(sstats));
+%    fprintf('size(fmean) is %d %d\n', size(fmean));
+%    fprintf('size(fstd) is %d %d\n', size(fstd));
     normalizedf = (sstats - fmean) ./ fstd;
     score = normalizedf * coeff;
   end
@@ -67,7 +67,7 @@ function deriveISspace(PcbStatsFile, freshlyNormalize, ISNormRotStatsFile, outpu
   
   examineMaleFemale(score, metad);
   examineAB(score, metad);
-  %%  wordFreqAnalysis(score, metad);  % takes 3 hours
+  wordFreqAnalysis(score, metad);  % takes 3 hours for trainset
 
   %% examineAge(score, metad);  % a trifle slow 
 
@@ -76,7 +76,7 @@ function deriveISspace(PcbStatsFile, freshlyNormalize, ISNormRotStatsFile, outpu
   %%  writeSomeClosePairs(score, sourceInfo);  % a trifle slow 
   examinePredictability(score, metad);
   pickClipsForExamination(score, sourceInfo, metad, soxfd);
-  pickClipsForHumanSubjects(score, sourceInfo, metad);
+  pickClipsForHumanSubjects(score, sourceInfo, metad, outDir);
 
   %% compareWithSubsets(coeff, normalized);  % a trifle verbose
   %% computeTopicAverages(score, metad);
@@ -377,30 +377,65 @@ end
 %% mturk-set1-06.wav, dim1score, dim2score, dim3score, ..., dim8score,
 %%    , clip source, dimension chosen for, high/low, percentile
 %% note that the anchors are generated above, in findClipsNearOrigin
-function pickClipsForHumanSubjects(score, sourceInfo, metad)
-
-  mturkfd = fopen('sox-for-mturk', 'w');
-  clipPredsFd = fopen('predictions-for-mturk', 'w'); 
-
+function pickClipsForHumanSubjects(score, sourceInfo, metad, outDir)
+  mtSoxFd = fopen([outDir 'sox-for-mturk-stimuli.sh'], 'w');
+  mtPredsFd = fopen([outDir 'predictions-for-mturk-stimuli.csv'], 'w'); 
+  alreadyUsed = zeros(size(score,1), 1);
   for stimulusSet = 1:3
     fprintf('writing stimulusSet %d\n', stimulusSet);
+    fprintf(mtSoxFd, '\n# ======= Stimulus Set %2d\n', stimulusSet);
     permutation = randperm(16);
     for dim=1:8
+      fprintf(mtSoxFd, '# Dimension %2d\n', dim);
       for pole = [0 1]
+	fileID =  permutation((2*dim + pole) - 1);   % an obscure ID code 
 	percentile = 1 + 98 * pole;  % 1 or 99
-	dither = (stimulusSet - 2) * .1;
-	exactPercentile = percentile + dither;
-	stimFileName = sprintf('stimulus-%d-%2d.wav', ...
-			       stimulusSet,  permutation(2*dim + pole));
-%	xxx pick clip closest to exactPercentile
-	fprintf(mturkfd, 'sox %s %s trim xxxx\n', xxx, stimFileName, yyy);
-	fprintf(clipPredsFd, '%s, ', stimFileName);
-%	fprintf(clipPredsFd, '%.3f, ', score-for-this-clip
+	[ix, alreadyUsed] = findUnusedNearPctl(score, sourceInfo, dim, pole, ...
+					       percentile, alreadyUsed);
+	clipnum = metad(ix, 4);
+	startSeconds = 30 * (clipnum - 1);
+	wavFileName = metad(ix,2);
+	stimFileName = sprintf('stimulus-%d-%02d.wav', stimulusSet, fileID)  ;
+	fprintf(mtSoxFd, ...
+		'sox %s %s trim 0:%d 0:30 fade 0 -1 0.01\n', ...
+		   wavFilePath(wavFileName), stimFileName, startSeconds);
+	fprintf(mtPredsFd, '%s, ', stimFileName);
+	fprintf(mtPredsFd, '%.3f, ', score(ix, 1:8));
+	fprintf(mtPredsFd, 'source=%s, dim=%d, pole=%d', ...
+		sourceString(ix, sourceInfo), dim, pole);
+	fprintf(mtPredsFd, '\n');
       end
     end
   end
-  fclose(mturkfd);
-  fclose(clipPredsFd);
+  fclose(mtSoxFd);
+  fclose(mtPredsFd);
+end
+
+
+function [ix, alreadyUsed] = findUnusedNearPctl(score, sourceInfo, dim, pole,...
+						targetPctl, alreadyUsed)
+  direction = (2 * pole - 1);   % -1 or +1
+  stepSize = 0.02;  % percentiles, reasonable, since there are 8227 testset clips
+  step = stepSize * direction;  % step towards the pole extreme
+  maxSteps = 100;
+  for percentile = targetPctl:step:targetPctl + .8 * direction
+    targetVal = prctile(score(:,dim), percentile);
+    matchDistance = abs(score(:,dim) - targetVal);
+    [val, ix] = min(matchDistance);
+    %%fprintf('#  dim %d: %s is closest to target %5.1f (%2.2f percentile)\n', ...
+    %%  dim, sourceString(ix, sourceInfo), targetVal, percentile);
+    if alreadyUsed(ix)
+      %%fprintf('clip %2d was already picked as a stimulus; looking further\n', ix);
+      continue
+    end
+    if sourceInfo(ix,2) == 1;  % right track is focal, so don't use it
+      %%fprintf('skipping a right-track fragment\n');
+      continue
+      end
+    alreadyUsed(ix) = 1;
+    return
+  end
+  fprintf('!!! scanned %d candidates with no luck!!! bad!!!\n', maxSteps);
 end
 
 
@@ -430,7 +465,6 @@ function writePercentileExemplar(score, sourceInfo, metad, dim, percentileTarget
   wavFileName = metad(ix,2);
   fprintf(soxfd, 'sox %s exemplarDim%dPctle%0.2f.wav trim 0:%d 0:30 fade 0 -1 0.01\n', ...
 	  wavFilePath(wavFileName), dim, percentileTarget, startSeconds);
-
 end 
 
 

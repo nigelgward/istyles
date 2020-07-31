@@ -34,8 +34,8 @@ function computeStyleParams(toProcessListFile, statsFile)
 
   motherDirectory = 'f:/nigel/comparisons/en-swbd/';
   subDirList = {'disc1/wavfiles', 'disc2/wavfiles', 'disc3/wavfiles', 'disc4/wavfiles' };
-  %%motherDirectory = '../';       %% for testing
-  %%subDirList = {'shortTests'};   %% for testing
+%  motherDirectory = '../';       %% for testing
+%  subDirList = {'shortTests'};   %% for testing
 
   nDimsToProcess = 12;  
   featurelist =  getfeaturespec(fsfile);   %% midlevel/flowtest/pbook.fss
@@ -73,19 +73,19 @@ function computeStyleParams(toProcessListFile, statsFile)
 end  
 
 
-%% the new version, computing stats for 39 second clips of an audio file 
+%% the new version, computing stats for 30 second clips of an audio file 
 function computeAndWriteStatsOnDistribs(rotated, sigmas, nDimsToProcess, ...
 					dialogNum, side, provenance, statsFile);
-  clipSizeSec = 30; % seconds; formerly 32
+  clipSizeSec = 30; 
   framesPerSec = 100; 
   clipSizeFr = clipSizeSec * framesPerSec;
   nclips = floor(length(rotated) / clipSizeFr);
   for clipNum = 1:nclips
     startFr = 1 + clipSizeFr * (clipNum - 1);
-    endFr = startFr + clipSizeFr;
-    clipBit = rotated(startFr:endFr - 1,:);
+    endFr = startFr + clipSizeFr - 1;
+    clipBit = rotated(startFr:endFr,:);
     clipStats = computeStatsOnDistributions(clipBit, sigmas, nDimsToProcess);
-    writeDistributionStats2(dialogNum, side, clipNum, clipStats, provenance, statsFile);
+    writeDistributionStats(dialogNum, side, clipNum, clipStats, provenance, statsFile);
   end
 end 
 
@@ -115,18 +115,6 @@ function names = dimDescriptions()
 end
 
 
-%% for use as a testing stub
-%% note that the mean for each dimension, on the training set, should be zero
-function [stats] = computeMeans(rotated, sigmas, nDimsToProcess) 
-  stats = mean(rotated);
-  stds = std(rotated);
-  names = dimDescriptions();
-  for i = 1:nDimsToProcess
-    name = names(i);
-    fprintf('dim %2d: mean %5.2f, std %.2f (%s) \n', i, stats(i), stds(i), names{i});
-  end
-end
-
 
 function stats = computeDistributionStats(dimNum, dimColumn, sigma)
   intervals = intervalsForCSP();          % endpoints of each bin: -10 to -2.4, etc.
@@ -134,7 +122,6 @@ function stats = computeDistributionStats(dimNum, dimColumn, sigma)
   nIntervals = size(intervals,1);
   names = dimDescriptions();
   stats = zeros(1,nIntervals);
-  nameCell = names(dimNum);  %% not tested
   %%fprintf('  dim %2d, mean is %.2f \n', dimNum, mean(dimColumn));
   for i = 1:nIntervals
     stats(i) = countFractionInRange(dimColumn, adjustedIntervals(i,1), adjustedIntervals(i,2));
@@ -154,7 +141,7 @@ end
 
 %% append a line of comma-separated values to the exiting file: each line is:
 %%    dialogID, left/right, clipNum, stats fields
-function writeDistributionStats2(dialogID, side, clipnum, stats, provenance, statsFile)
+function writeDistributionStats(dialogID, side, clipnum, stats, provenance, statsFile)
   fd = fopen(statsFile, 'a');
   if side == 'l' 
     infoString = sprintf('%4d, 0, %2d ',  dialogID, clipnum);
@@ -172,11 +159,25 @@ function writeDistributionStats2(dialogID, side, clipnum, stats, provenance, sta
   fclose(fd);
 end
 
+
+%% a testing stub
+%% note that the mean for each dimension, on the training set, should be zero
+function [stats] = computeMeans(rotated, sigmas, nDimsToProcess) 
+  stats = mean(rotated);
+  stds = std(rotated);
+  names = dimDescriptions();
+  for i = 1:nDimsToProcess
+    name = names(i);
+    fprintf('dim %2d: mean %5.2f, std %.2f (%s) \n', i, stats(i), stds(i), names{i});
+  end
+end
+
+
 %% ----------------------------------------------------------------------------
 %% below this point is code for the old versions, which computed
 %% stats over entire audio files, rather than just fragmnts 
 
-function computeAndWriteStatsOnDistribsOld(rotated, sigmas, nDimsToProcess, ...
+function computeAndWriteStatsOnDistribsWholeFile(rotated, sigmas, nDimsToProcess, ...
 					dialogNum, side, provenance, statsFile);
   %%these lines are for testing computeStatsOnDistributions on synthetic data
   %%testDistributions = distributionsForTesting(nDimsToProcess);
@@ -187,7 +188,7 @@ function computeAndWriteStatsOnDistribsOld(rotated, sigmas, nDimsToProcess, ...
   writeDistributionStats(dialogNum, side, stats, provenance, statsFile);
 end 
 
-function writeDistributionStatsOld(dialogID, side, stats, provenance, statsFile)
+function writeDistributionStatsWholeFile(dialogID, side, stats, provenance, statsFile)
   fd = fopen(statsFile, 'a');
   if side == 'l' 
     infoString = sprintf('%4d, 0, ',  dialogID);
