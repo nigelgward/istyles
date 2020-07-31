@@ -16,7 +16,9 @@ Readme.txt
 reaper -- downloaded pitch tracker
 shortTests -- wav files etc for testing purposes
 splits -- listings of the data subsets: training, test ...
-stats -- working space for various intermediate files and results 
+stats -- working space for various intermediate files and results
+   but also contains swbdTotal.txt and swbdCounts.txt
+   and copies of some of the Switchboard metada .csv files
 todo.txt
 trainIStyles -- the interaction style space derived from the training data
 wordstats -- lexical occurrence statistics etc for each pole of the training-data space

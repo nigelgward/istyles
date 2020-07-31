@@ -963,6 +963,7 @@ July 30
        and then "focal" simply means " left
    only using left tracks also avoids the danger of presenting the same clip twice,
       once for r and once for l
+   on cygwin, "play" has a crash and a loud chirp at the end; trim and fade don't help 
 
 
 TODO: 
