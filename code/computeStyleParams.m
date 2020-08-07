@@ -27,15 +27,19 @@
 %% to run, edit motherDirectory, and subDirList, then
 %%      computeStyleParams('trainset.txt', 'trainsetStats.csv');
 
-function computeStyleParams(toProcessListFile, statsFile)
+function computeStyleParams(toProcessListFile, statsFile, testp)
   fsfile = 'pbook.fss';
   rsfile = 'rotationspec.mat';    % copied from book/pbook-run/, created by findDimensions
   sifile = 'sigmas.csv';          
 
-  motherDirectory = 'f:/nigel/comparisons/en-swbd/';
-  subDirList = {'disc1/wavfiles', 'disc2/wavfiles', 'disc3/wavfiles', 'disc4/wavfiles' };
-%  motherDirectory = '../';       %% for testing
-%  subDirList = {'shortTests'};   %% for testing
+  if testp == 1  
+    fprintf('!!!!!! running in test mode, since testp is true\n');
+    motherDirectory = '../';       
+    subDirList = {'shortTests'};   
+  else
+    motherDirectory = 'f:/nigel/comparisons/en-swbd/';
+    subDirList = {'disc1/wavfiles', 'disc2/wavfiles', 'disc3/wavfiles', 'disc4/wavfiles' };
+  end
 
   nDimsToProcess = 12;  
   featurelist =  getfeaturespec(fsfile);   %% midlevel/flowtest/pbook.fss
@@ -114,25 +118,6 @@ function names = dimDescriptions()
 	  };
 end
 
-
-
-function stats = computeDistributionStats(dimNum, dimColumn, sigma)
-  intervals = intervalsForCSP();          % endpoints of each bin: -10 to -2.4, etc.
-  adjustedIntervals = intervals * sigma;  % normalize for this dimension's variance
-  nIntervals = size(intervals,1);
-  names = dimDescriptions();
-  stats = zeros(1,nIntervals);
-  %%fprintf('  dim %2d, mean is %.2f \n', dimNum, mean(dimColumn));
-  for i = 1:nIntervals
-    stats(i) = countFractionInRange(dimColumn, adjustedIntervals(i,1), adjustedIntervals(i,2));
-  end
-end
-
-
-function frac = countFractionInRange(column, lowerBound, upperBound)
-  frac = length(column(column>=lowerBound & column< upperBound)) /length(column);
-  %%fprintf('frac between %4.1f and %4.1f is %.3f\n', lowerBound, upperBound, frac);
-end
 
 function id = swbdFilename2dialogID(filename)
   id = str2num(filename(4:7));   % integer from the 4-digit code

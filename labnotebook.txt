@@ -966,11 +966,39 @@ July 30
    on cygwin, "play" has a crash and a loud chirp at the end; trim and fade don't help 
 
 
-TODO: 
-  re-listen to the new exemplars; finalize attributes
+August 1
 
-  re-generate the word counts
+  listened to trainng data stimulus set 4, and made my own judgements
+  then analyzed the results.  Pretty poor.
 
+  I listened to the ones where my perceptions differed from that of
+  the model.
+
+  -- Some were carelessness;
+  it's difficult to judge 8 attributes reliably so maybe cut the number.
+
+  -- Some were poorly named (expert -> knowledgable)
+
+  -- having the ones needing to listen to the entire clip at the front was bad;
+  so I move those to the end.
+
+  --- there ware other, unfixable specific confounds, now documented in the paper 
 
   
-  
+August 3, doing a sanity check on testset stimulus-set 4 (reserved not to use in experiments),
+listening and then marking the poles I hear as clearly present, or dimensions near-ish to zero
+
+- overall, probably about 2 thirds of the time I'm agreeing with the
+  model.
+- A few of the disagreements are carelessness, a few others
+  are where I perceive there could be an ambiguity, and for only a core of
+  under 10% do the model's predictions seem wrong.
+- In future we'll
+  quantify all of this, but for now, it passes the sanity check. 
+
+August 5, wrote plotDim in the midlevel,
+   now using it to look for an audio with a clear minor third
+   21d has something resembling it at 34 seconds, but goes up, not down
+
+eng001 is neat
+eng002 is cute: at 4 seconds there's an extreme minor-third construction 

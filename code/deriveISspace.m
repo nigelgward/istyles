@@ -72,9 +72,9 @@ function deriveISspace(PcbStatsFile, makeNewSpace, ISNormRotStatsFile, outputDir
   
   examineMaleFemale(score, metad);
   examineAB(score, metad);
-  wordFreqAnalysis(score, metad);  % takes 3 hours for trainset
+  %wordFreqAnalysis(score, metad);  % takes about 2 hours for trainset
 
-  %% examineAge(score, metad);  % a trifle slow 
+  examineAge(score, metad);  % a trifle slow 
 
   soxfd = fopen([outDir 'sox-commands.sh'], 'w');    % to later execute with bash
   findClipsNearOrigin(score, sourceInfo, metad, soxfd);  
@@ -170,31 +170,6 @@ function variExplained(latent)
 end
 
 
-%% write a file listing the most extreme clips for each pole, for listening
-function writeISexemplars(score, sourceInfo)
-  fprintf('writing exemplars ... ');
-  dimsToShow = 10; 
-  exemplarsToWrite = 100;
-  de = fopen('dimExemplars.txt', 'w');
-  fprintf(de, 'Interaction Style Dimension %s\n', datestr(clock));
-  for dim = 1:dimsToShow
-    dimSlice = score(:, dim);
-    nsides = length(dimSlice);
-    [vals, sortIndices] = sort(dimSlice);
-    fprintf(de, '\n for dim%2d pos:\n', dim);
-    for i=0:exemplarsToWrite
-      fprintf(de, '%s  %.1f\n', ...
-	      sourceString(sortIndices(nsides-i), sourceInfo), vals(nsides-i));
-    end
-    fprintf(de, '          neg:\n', dim);
-    for i=1:exemplarsToWrite
-      fprintf(de, '%s  %.1f\n', sourceString(sortIndices(i), sourceInfo), vals(i));
-    end
-  end
-  fprintf(de, '\n');
-  fclose(de);
-  fprintf('... done \n');
-end
 
 
 %% return a human-readable string 
@@ -313,70 +288,6 @@ function distance = euclidean(vec1, vec2)
 end
 
 
-%% return only sides that are within the threshold number of
-%%   standard deviations on all dimensions
-function [pruSstats, pruSourceInfo] = pruneExcessives(sstats, sourceInfo, featNames)
-  for feat = 1: size(sstats, 2)
-    histogram(sstats(:,feat))
-    title(labelString(feat, featNames));
-    pause(2);
-  end
-
-  fprintf('pruneExcessives\n');
-  threshold = 25;   %  need to set sensibly!!!
-  %%tmp = mean(score) + threshold * std(score);
-  sstatsStdDevs = std(sstats);
-  excessiveStatMatrix = sstats > abs(mean(sstats) + threshold * sstatsStdDevs);
-  %% a boolean column vector with 1 for no-good sides
-  excessives = sum(excessiveStatMatrix, 2) > 0;  
-  for side = 1:size(sstats,1)
-    if excessives(side) 
-     %%fprintf('%s is excessive: exceeds %.1f stds on stats: \n          ', ...
-%	      sourceString(side, sourceInfo), threshold);
-      for feat = 1:size(sstats, 2)
-	if excessiveStatMatrix(side, feat)
-	  %% assume the mean is not significantly off zero
-	  fprintf(' %d %s (%s) (%.2f, %.2f std devs, mean is %.4f, std is %.2f)  \n', ...
-		  feat, sourceString(side, sourceInfo), ...
-		  labelString(feat, featNames), sstats(side,feat), ...
-		  sstats(side,feat) / std(sstats(:,feat)), ...
-		  mean(sstats(:,feat)), std(sstats(:,feat)) );
-	end
-      end
-    end
-  end
-  fprintf('pruning %d sides since excessive on some statistic\n', sum(excessives));
-  pruSstats = sstats(excessives==0,:);
-  pruSourceInfo = sourceInfo(excessives==0,:);
-end
-
-
-%% flag sides that exceed the threshold number of stds on some istyles dimensions 
-function warnReExcessives(score, sstats, sourceInfo, featNames)
-  Eight = 8;
-  threshold = 15;   % arbitrary
-  %%tmp = mean(score) + threshold * std(score);
-  excessiveDimMatrix = abs(score) > mean(score) + threshold * std(score);
-  excessiveDimMatrix = excessiveDimMatrix(:,1:Eight);
-  %% a boolean column vector with 1 for no-good sides
-  excessives = sum(excessiveDimMatrix, 2) > 0;  
-  for side = 1:length(score)
-    if excessives(side) 
-      fprintf('Warning: %s is excessive: exceeds %.1f stds on dimensions: \n          ', ...
-	      sourceString(side, sourceInfo), threshold);
-      for dim = 1:Eight
-	if excessiveDimMatrix(side, dim)
-	  fprintf(' %d (%.2f, %.2f std devs)  ', ...
-		  dim, score(side,dim), score(side,dim) / std(score(:,dim)));
-	end
-      end
-      fprintf('\n');
-    end
-  end
-end
-
-
-
 %% for the experiments, apply this to tracks NOT in the training set 
 %% each line of the predictions will contain
 %% mturk-set1-06.wav, dim1score, dim2score, dim3score, ..., dim8score,
@@ -386,8 +297,8 @@ function pickClipsForHumanSubjects(score, sourceInfo, metad, outDir)
   mtSoxFd = fopen([outDir 'sox-for-mturk-stimuli.sh'], 'w');
   mtPredsFd = fopen([outDir 'predictions-for-mturk-stimuli.csv'], 'w'); 
   alreadyUsed = zeros(size(score,1), 1);
-  for stimulusSet = 1:3
-    fprintf('writing stimulusSet %d\n', stimulusSet);
+  for stimulusSet = 1:4
+    fprintf('writing sox commands etc for Stimulus Set %d\n', stimulusSet);
     fprintf(mtSoxFd, '\n# ======= Stimulus Set %2d\n', stimulusSet);
     permutation = randperm(16);
     for dim=1:8
@@ -422,7 +333,7 @@ function [ix, alreadyUsed] = findUnusedNearPctl(score, sourceInfo, dim, pole,...
   direction = (2 * pole - 1);   % -1 or +1
   stepSize = 0.02;  % percentiles, reasonable, since there are 8227 testset clips
   step = stepSize * direction;  % step towards the pole extreme
-  limitPercentile = targetPctl + .8 * direction    % 0.2 or 99.8
+  limitPercentile = targetPctl + .8 * direction;    % 0.2 or 99.8
   for percentile = targetPctl:step:limitPercentile
     targetVal = prctile(score(:,dim), percentile);
     matchDistance = abs(score(:,dim) - targetVal);
@@ -771,7 +682,7 @@ end
 
 
 function n = NSourceInfoFields()
-  n = 3;  % file ID, track number, clip number
+  n = 3;  % there are 3 info fields: file ID, track number, clip number
 end
 
 
@@ -821,6 +732,8 @@ function writeLoadingsTable(coeff, featuresCellArray, header, outdir)
 end
 
 
+%% ---------------------- dead code below this point --------------------
+
 
 %% to analyze turn-taking styles only, can interpolate these lines in
 %% the main function just above normalization
@@ -832,3 +745,95 @@ end
 %  %%TEMPORARY, TO GET DIMENSIONS RELATING ONLY TO TURN-TAKING
 %  sstats = sstats(:, turnTakingRelatedMask==1);
 %  featNames = featNames(turnTakingRelatedMask==1);
+
+
+%% write a file listing the most extreme clips for each pole, for listening
+%% now mostly replaced by pickClipsForHumanSubjects
+function writeISexemplars(score, sourceInfo)
+  fprintf('writing exemplars ... ');
+  dimsToShow = 10; 
+  exemplarsToWrite = 100;
+  de = fopen('dimExemplars.txt', 'w');
+  fprintf(de, 'Interaction Style Dimension %s\n', datestr(clock));
+  for dim = 1:dimsToShow
+    dimSlice = score(:, dim);
+    nsides = length(dimSlice);
+    [vals, sortIndices] = sort(dimSlice);
+    fprintf(de, '\n for dim%2d pos:\n', dim);
+    for i=0:exemplarsToWrite
+      fprintf(de, '%s  %.1f\n', ...
+	      sourceString(sortIndices(nsides-i), sourceInfo), vals(nsides-i));
+    end
+    fprintf(de, '          neg:\n', dim);
+    for i=1:exemplarsToWrite
+      fprintf(de, '%s  %.1f\n', sourceString(sortIndices(i), sourceInfo), vals(i));
+    end
+  end
+  fprintf(de, '\n');
+  fclose(de);
+  fprintf('... done \n');
+end
+
+
+
+%% return only sides that are within the threshold number of
+%%   standard deviations on all dimensions
+function [pruSstats, pruSourceInfo] = pruneExcessives(sstats, sourceInfo, featNames)
+  for feat = 1: size(sstats, 2)
+    histogram(sstats(:,feat))
+    title(labelString(feat, featNames));
+    pause(2);
+  end
+
+  fprintf('pruneExcessives\n');
+  threshold = 25;   %  need to set sensibly!!!
+  %%tmp = mean(score) + threshold * std(score);
+  sstatsStdDevs = std(sstats);
+  excessiveStatMatrix = sstats > abs(mean(sstats) + threshold * sstatsStdDevs);
+  %% a boolean column vector with 1 for no-good sides
+  excessives = sum(excessiveStatMatrix, 2) > 0;  
+  for side = 1:size(sstats,1)
+    if excessives(side) 
+     %%fprintf('%s is excessive: exceeds %.1f stds on stats: \n          ', ...
+%	      sourceString(side, sourceInfo), threshold);
+      for feat = 1:size(sstats, 2)
+	if excessiveStatMatrix(side, feat)
+	  %% assume the mean is not significantly off zero
+	  fprintf(' %d %s (%s) (%.2f, %.2f std devs, mean is %.4f, std is %.2f)  \n', ...
+		  feat, sourceString(side, sourceInfo), ...
+		  labelString(feat, featNames), sstats(side,feat), ...
+		  sstats(side,feat) / std(sstats(:,feat)), ...
+		  mean(sstats(:,feat)), std(sstats(:,feat)) );
+	end
+      end
+    end
+  end
+  fprintf('pruning %d sides since excessive on some statistic\n', sum(excessives));
+  pruSstats = sstats(excessives==0,:);
+  pruSourceInfo = sourceInfo(excessives==0,:);
+end
+
+
+%% flag sides that exceed the threshold number of stds on some istyles dimensions 
+function warnReExcessives(score, sstats, sourceInfo, featNames)
+  Eight = 8;
+  threshold = 15;   % arbitrary
+  %%tmp = mean(score) + threshold * std(score);
+  excessiveDimMatrix = abs(score) > mean(score) + threshold * std(score);
+  excessiveDimMatrix = excessiveDimMatrix(:,1:Eight);
+  %% a boolean column vector with 1 for no-good sides
+  excessives = sum(excessiveDimMatrix, 2) > 0;  
+  for side = 1:length(score)
+    if excessives(side) 
+      fprintf('Warning: %s is excessive: exceeds %.1f stds on dimensions: \n          ', ...
+	      sourceString(side, sourceInfo), threshold);
+      for dim = 1:Eight
+	if excessiveDimMatrix(side, dim)
+	  fprintf(' %d (%.2f, %.2f std devs)  ', ...
+		  dim, score(side,dim), score(side,dim) / std(score(:,dim)));
+	end
+      end
+      fprintf('\n');
+    end
+  end
+end

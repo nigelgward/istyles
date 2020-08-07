@@ -2,6 +2,13 @@
 %% Nigel Ward, June 2020
 %% writes a bash script to compute word ratios
 
+%% the directory structure here is messed up;
+%% some files are written to stats/ and some to wordstats/
+%% some of the files needed are in stats/
+%%   (namely swbdCount.txt and swbdTotal.txt)
+
+
+
 function wordFreqAnalysis(score, metad)
   %% for testing:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   %%  score = score(1:1000,:);
@@ -46,7 +53,7 @@ function scriptfile = writeWordStatsBash(dim, direction, clipsubset);
 	  dimdir, dimdir);
   fprintf(fd, 'join -1 2 -2 2 idim%sCounts.txt swbdCounts.txt > tmpJoined.txt\n\n', ...
 	  dimdir);
-  fprintf(fd, 'awk -v zoneTotal=idim%sTotal.txt -f ../wordstats/computeRatios.awk tmpJoined.txt > isratios%s.txt\n', dimdir, dimdir);
+  fprintf(fd, 'awk -v zoneTotal=idim%sTotal.txt -f ../code/freqRatios.awk tmpJoined.txt > isratios%s.txt\n', dimdir, dimdir);
 end
 
 
