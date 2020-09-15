@@ -1,7 +1,7 @@
 # prepMetadata.sh, in istyles/code,  for getting Switchboard metadata into a Matlab-friendly format 
 # Nigel Ward, June 2020
 # to run
-#   cd istyles/stats
+#   cd istyles/swbd-various
 #   bash ../code/prepMetadata.sh
 
 awk '{if ($2=="\"A\",") {print substr($1,1,4), 0,  substr($3,1,4), substr($6, 1, 3)} else {print substr($1,1,4), 1, substr( $3,1,4), substr($6, 1, 3)}}' /cygdrive/f/nigel/comparisons/en-swbd/ldc-docs/call_con_tab.csv > call_con_tab_numeric.csv

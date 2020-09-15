@@ -28,9 +28,9 @@
 %%      computeStyleParams('trainset.txt', 'trainsetStats.csv');
 
 function computeStyleParams(toProcessListFile, statsFile, testp)
-  fsfile = 'pbook.fss';
-  rsfile = 'rotationspec.mat';    % copied from book/pbook-run/, created by findDimensions
-  sifile = 'sigmas.csv';          
+  fsfile = 'pcparams/pbook.fss';
+  rsfile = 'pcparms/rotationspec.mat';    % copied from book/pbook-run/, created by findDimensions
+  sifile = 'pcparams/sigmas.csv';          
 
   if testp == 1  
     fprintf('!!!!!! running in test mode, since testp is true\n');

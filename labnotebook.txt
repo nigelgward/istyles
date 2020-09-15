@@ -917,7 +917,7 @@ generally, reason, perspective, decisions, likely, trend, percentage, convinced,
 
 
 July 28
-  modifying deriveISspace to alternative compute and save the tranformstion to a space
+  modifying deriveISspace to alternative compute and save the transformation to a space
   or to reuse an existing one
 
   (will also need to modify computeStyleParams)
@@ -996,9 +996,90 @@ listening and then marking the poles I hear as clearly present, or dimensions ne
 - In future we'll
   quantify all of this, but for now, it passes the sanity check. 
 
-August 5, wrote plotDim in the midlevel,
+August 5, wrote plotDim in the midlevel, for use making slides, and eventually a figure for the paper
    now using it to look for an audio with a clear minor third
    21d has something resembling it at 34 seconds, but goes up, not down
 
 eng001 is neat
 eng002 is cute: at 4 seconds there's an extreme minor-third construction 
+
+Aug 7 was concerned that some of the items chosen by my stimulus
+   selection procedure had very extreme values on some other
+   dimensions, and thus were possible weird outliers.  But looking at
+   a few of those chosen from the training set, some were a little
+   weird, but overall half seemed just right, a quarter seemed a
+   little exaggerated but okay, and a quarter seemed
+   reversed/opposite/wrong.  Which is roughly what I'm feeling is my
+   status for the other clips also.  So there's probably nothing
+   strongly wrong here.
+
+
+Aug 18
+   creating the audio clips for the soundcheck,
+   recorded the pieces in mono using praat, stored them in clips-for-experiment
+      sox -M left.wav silence.wav left-on-left.wav
+      sox left-on-left.wav  left-on-left.wav  left-on-left.wav left-on-left-thrice.wav
+        ditto for right 
+      sox -M for-each.wav for-each.wav for-each-stereo.wav
+      sox -M on-the-right.wav on-the-right.wav on-the-right-stereo.wav 
+      sox for-each-stereo.wav left-*thrice.wav on-the-ight-stereo.wav right-*thrice.wav initial-prompt.wav
+   now the stimuli: phrase-one.wav etc.  The order is RLLR.
+      sox -M silence.wav phrase-one.wav phrase-one-stereo.wav
+      ...
+   plus lots of trimming 
+
+   creating the audio clip for the attention check
+      sox anchor5.wav anchor5-faded.wav fade 0 22 4
+
+
+Aug 31 QuestionPro work 
+
+
+     Jonathan says: in the Media Library, click the 3 dots, then get html
+       then go to where you want it, open Rich Text Editor, then click source
+       then paste the html
+     ... but when I do so, it's later gone; most likely it prunes out
+     "external" references, including those
+     to the Media Library of non-owning users ... it works okay if I copy
+     the survey ... then I can add media
+    
+   so I patched the wav files into attention check and stereo check 
+
+   renamed Jonathan's correlations.m file as anaPerceptions.m, since
+   it analyzes perceptions
+
+September 11
+  Here is the process for creating a QuestionPro Survey
+  1. decide whether to take the stimuli from the testset or trainset
+     run deriveISspace('test2Stats.csv' ...
+        or
+	deriveISspace('train-30sec.csv', ...
+  2. edit the line with "mtPredsFd" to open the correct output file 
+
+
+
+To Do: 
+
+   test all the code and verify that it matches the documentation
+
+   git push 
+
+   document and test the process of creating stimuli, loading to
+   questionPro, downloading results and running anaPerceptions
+
+
+   in QuestionPro, 
+     add a new final comment field, and one after the attention check
+     take out the comment fields
+     add something to prevent "next-next-next" and all zeros
+      - perhaps a warning that I will check before paying
+     restore the missing audios
+
+   upload a new stimulus set
+   judge it
+   process it 
+
+   add final screen re approval plan (count non-zero entries)
+   do a run-through of Mturk integration    
+
+
