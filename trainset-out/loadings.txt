@@ -1,0 +1,1021 @@
+Interaction Style Dimension Loadings, generated 15-Sep-2020 08:49:52
+
+dimension1  -0.02  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension1  -0.05  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension1   0.03  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension1  -0.05  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension1   0.03  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension1  -0.05  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension1  -0.02  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension1   0.10  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension1   0.19  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension1   0.03  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension1  -0.19  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension1  -0.19  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension1  -0.13  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension1  -0.07  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension1  -0.13  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension1  -0.18  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension1  -0.02  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension1   0.17  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension1  -0.02  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension1  -0.18  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension1  -0.13  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension1  -0.11  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension1  -0.12  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension1  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension1   0.14  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension1  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension1  -0.12  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension1  -0.11  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension1  -0.02  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension1  -0.01  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension1   0.12  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension1   0.09  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension1  -0.15  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension1  -0.17  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension1  -0.12  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension1  -0.05  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension1  -0.03  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension1   0.09  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension1   0.08  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension1  -0.11  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension1  -0.12  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension1  -0.09  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension1  -0.05  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension1  -0.04  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension1   0.01  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension1   0.03  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension1   0.01  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension1  -0.04  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension1  -0.05  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension1   0.02  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension1   0.10  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension1   0.21  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension1  -0.07  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension1  -0.21  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension1  -0.18  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension1  -0.10  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension1  -0.12  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension1  -0.17  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension1  -0.04  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension1   0.20  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension1  -0.04  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension1  -0.17  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension1  -0.11  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension1  -0.11  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension1  -0.13  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension1  -0.02  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension1   0.18  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension1  -0.02  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension1  -0.13  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension1  -0.11  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension1   0.08  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension1  -0.06  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension1  -0.08  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension1  -0.05  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension1  -0.03  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension1  -0.02  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension1  -0.01  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension1  -0.12  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension1  -0.15  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension1  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension1   0.20  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension1  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension1  -0.15  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension1  -0.12  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension2  -0.01  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension2  -0.17  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension2  -0.28  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension2  -0.00  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension2   0.29  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension2   0.17  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension2   0.01  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension2   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension2   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension2  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension2  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension2  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension2  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension2  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension2  -0.02  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension2   0.00  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension2   0.20  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension2   0.00  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension2  -0.20  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension2  -0.00  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension2   0.02  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension2  -0.08  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension2  -0.18  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension2  -0.27  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension2   0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension2   0.27  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension2   0.18  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension2   0.08  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension2  -0.00  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension2   0.00  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension2   0.00  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension2  -0.00  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension2  -0.00  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension2  -0.00  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension2  -0.00  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension2  -0.00  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension2  -0.00  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension2  -0.00  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension2   0.00  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension2   0.00  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension2  -0.00  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension2  -0.00  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension2  -0.06  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension2  -0.17  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension2  -0.28  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension2   0.00  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension2   0.28  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension2   0.17  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension2   0.06  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension2   0.00  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension2   0.00  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension2   0.00  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension2  -0.00  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension2  -0.00  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension2  -0.00  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension2  -0.00  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension2   0.03  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension2   0.10  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension2   0.21  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension2   0.00  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension2  -0.21  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension2  -0.10  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension2  -0.03  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension2  -0.02  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension2  -0.02  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension2   0.03  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension2   0.00  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension2  -0.03  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension2   0.02  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension2   0.02  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension2   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension2  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension2  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension2  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension2  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension2  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension2   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension2   0.07  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension2   0.15  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension2   0.19  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension2   0.00  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension2  -0.19  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension2  -0.15  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension2  -0.07  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension3  -0.00  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension3  -0.14  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension3   0.04  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension3   0.12  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension3   0.04  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension3  -0.14  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension3  -0.00  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension3   0.15  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension3   0.02  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension3  -0.26  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension3   0.10  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension3   0.17  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension3   0.16  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension3   0.11  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension3  -0.09  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension3  -0.08  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension3  -0.04  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension3   0.13  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension3  -0.04  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension3  -0.08  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension3  -0.09  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension3  -0.09  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension3  -0.10  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension3  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension3   0.13  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension3  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension3  -0.10  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension3  -0.09  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension3   0.04  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension3  -0.03  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension3  -0.09  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension3  -0.01  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension3   0.06  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension3   0.12  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension3   0.13  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension3   0.21  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension3   0.26  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension3  -0.12  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension3  -0.25  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension3   0.17  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension3   0.27  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension3   0.18  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension3  -0.01  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension3  -0.03  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension3  -0.02  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension3   0.08  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension3  -0.02  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension3  -0.03  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension3  -0.01  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension3   0.13  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension3   0.20  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension3  -0.06  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension3  -0.23  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension3   0.12  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension3   0.21  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension3   0.15  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension3  -0.07  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension3  -0.10  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension3  -0.03  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension3   0.12  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension3  -0.03  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension3  -0.10  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension3  -0.07  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension3   0.01  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension3  -0.02  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension3  -0.03  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension3   0.08  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension3  -0.03  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension3  -0.02  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension3   0.01  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension3  -0.03  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension3  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension3   0.08  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension3   0.04  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension3   0.01  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension3   0.01  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension3   0.01  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension3  -0.05  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension3  -0.08  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension3  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension3   0.14  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension3  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension3  -0.08  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension3  -0.05  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension4  -0.03  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension4  -0.05  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension4   0.06  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension4   0.00  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension4  -0.06  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension4   0.05  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension4   0.03  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension4  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension4  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension4   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension4   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension4   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension4   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension4   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension4  -0.04  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension4  -0.08  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension4  -0.19  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension4   0.00  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension4   0.19  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension4   0.08  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension4   0.04  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension4  -0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension4   0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension4   0.05  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension4  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension4  -0.05  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension4  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension4   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension4   0.00  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension4   0.00  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension4   0.00  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension4  -0.00  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension4  -0.00  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension4  -0.00  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension4  -0.00  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension4   0.00  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension4   0.00  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension4   0.00  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension4  -0.00  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension4  -0.00  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension4  -0.00  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension4  -0.00  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension4   0.07  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension4   0.13  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension4   0.13  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension4  -0.00  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension4  -0.12  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension4  -0.13  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension4  -0.06  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension4   0.00  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension4   0.00  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension4   0.00  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension4  -0.00  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension4   0.00  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension4   0.00  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension4   0.00  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension4   0.06  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension4   0.10  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension4   0.12  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension4   0.00  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension4  -0.12  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension4  -0.10  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension4  -0.06  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension4  -0.16  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension4  -0.30  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension4  -0.39  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension4  -0.00  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension4   0.39  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension4   0.30  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension4   0.16  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension4  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension4   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension4   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension4   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension4   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension4   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension4   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension4   0.11  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension4   0.18  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension4   0.26  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension4   0.00  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension4  -0.26  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension4  -0.18  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension4  -0.11  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension5   0.01  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension5   0.01  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension5  -0.01  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension5   0.06  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension5  -0.01  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension5   0.01  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension5   0.01  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension5   0.14  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension5   0.17  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension5  -0.07  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension5  -0.12  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension5  -0.10  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension5  -0.06  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension5  -0.03  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension5   0.04  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension5   0.05  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension5  -0.00  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension5  -0.04  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension5  -0.00  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension5   0.05  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension5   0.04  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension5   0.03  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension5   0.05  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension5   0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension5  -0.06  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension5   0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension5   0.05  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension5   0.03  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension5  -0.14  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension5  -0.32  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension5  -0.25  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension5   0.28  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension5   0.20  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension5   0.08  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension5   0.01  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension5  -0.03  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension5  -0.03  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension5  -0.19  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension5  -0.00  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension5   0.19  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension5   0.04  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension5   0.00  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension5  -0.08  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension5  -0.15  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension5  -0.03  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension5   0.26  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension5  -0.03  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension5  -0.15  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension5  -0.08  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension5   0.00  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension5  -0.02  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension5  -0.05  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension5   0.05  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension5   0.03  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension5  -0.02  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension5  -0.03  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension5   0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension5   0.06  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension5   0.02  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension5  -0.08  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension5   0.02  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension5   0.06  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension5   0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension5  -0.03  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension5  -0.05  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension5  -0.03  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension5   0.12  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension5  -0.03  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension5  -0.05  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension5  -0.03  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension5   0.34  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension5  -0.29  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension5  -0.26  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension5  -0.17  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension5  -0.12  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension5  -0.09  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension5  -0.05  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension5   0.03  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension5   0.03  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension5   0.01  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension5  -0.05  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension5   0.01  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension5   0.03  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension5   0.03  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension6   0.01  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension6   0.12  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension6  -0.01  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension6  -0.25  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension6  -0.01  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension6   0.12  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension6   0.01  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension6  -0.18  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension6  -0.21  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension6   0.11  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension6   0.15  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension6   0.08  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension6   0.04  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension6   0.02  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension6  -0.02  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension6  -0.15  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension6  -0.13  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension6   0.29  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension6  -0.13  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension6  -0.15  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension6  -0.02  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension6  -0.05  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension6  -0.09  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension6   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension6   0.05  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension6   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension6  -0.09  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension6  -0.05  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension6  -0.06  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension6  -0.19  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension6  -0.25  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension6   0.15  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension6   0.23  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension6   0.11  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension6   0.05  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension6  -0.07  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension6  -0.19  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension6  -0.21  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension6   0.19  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension6   0.06  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension6  -0.04  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension6  -0.02  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension6  -0.06  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension6  -0.08  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension6  -0.00  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension6   0.10  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension6  -0.00  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension6  -0.08  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension6  -0.06  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension6  -0.11  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension6  -0.20  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension6  -0.05  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension6   0.16  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension6   0.01  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension6   0.01  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension6   0.01  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension6  -0.04  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension6  -0.09  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension6  -0.08  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension6   0.20  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension6  -0.08  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension6  -0.09  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension6  -0.04  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension6   0.03  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension6   0.04  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension6   0.01  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension6  -0.06  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension6   0.01  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension6   0.04  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension6   0.03  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension6  -0.17  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension6   0.16  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension6   0.10  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension6   0.07  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension6   0.07  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension6   0.05  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension6   0.03  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension6  -0.00  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension6  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension6  -0.04  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension6   0.10  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension6  -0.04  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension6  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension6  -0.00  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension7   0.03  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension7  -0.03  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension7  -0.03  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension7   0.24  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension7  -0.03  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension7  -0.03  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension7   0.03  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension7   0.12  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension7   0.10  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension7  -0.13  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension7  -0.03  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension7   0.03  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension7  -0.02  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension7  -0.03  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension7  -0.01  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension7   0.02  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension7   0.01  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension7  -0.03  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension7   0.01  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension7   0.02  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension7  -0.01  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension7   0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension7   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension7  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension7  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension7  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension7   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension7   0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension7  -0.01  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension7  -0.06  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension7  -0.03  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension7   0.10  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension7  -0.01  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension7  -0.03  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension7  -0.05  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension7  -0.05  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension7  -0.08  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension7  -0.04  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension7   0.11  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension7  -0.03  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension7  -0.08  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension7  -0.05  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension7  -0.04  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension7  -0.10  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension7  -0.03  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension7   0.18  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension7  -0.03  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension7  -0.10  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension7  -0.04  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension7   0.05  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension7   0.11  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension7   0.11  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension7  -0.06  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension7  -0.12  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension7  -0.11  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension7  -0.07  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension7   0.02  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension7   0.01  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension7   0.01  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension7  -0.02  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension7   0.01  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension7   0.01  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension7   0.02  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension7   0.10  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension7   0.05  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension7  -0.03  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension7  -0.01  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension7  -0.03  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension7   0.05  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension7   0.10  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension7  -0.05  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension7  -0.10  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension7   0.15  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension7   0.39  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension7   0.48  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension7   0.42  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension7   0.27  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension7   0.08  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension7   0.07  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension7   0.00  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension7  -0.08  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension7   0.00  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension7   0.07  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension7   0.08  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension8   0.05  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension8   0.03  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension8  -0.01  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension8   0.00  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension8  -0.01  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension8   0.03  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension8   0.05  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension8   0.01  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension8   0.10  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension8  -0.06  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension8  -0.16  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension8   0.06  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension8   0.30  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension8   0.34  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension8  -0.00  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension8  -0.07  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension8  -0.02  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension8   0.08  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension8  -0.02  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension8  -0.07  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension8  -0.00  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension8   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension8  -0.03  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension8  -0.03  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension8   0.12  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension8  -0.03  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension8  -0.03  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension8   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension8   0.10  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension8   0.04  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension8   0.09  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension8  -0.07  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension8  -0.15  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension8   0.05  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension8   0.24  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension8  -0.05  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension8  -0.21  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension8   0.10  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension8   0.16  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension8  -0.21  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension8  -0.07  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension8   0.19  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension8   0.06  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension8   0.03  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension8   0.01  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension8  -0.06  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension8   0.01  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension8   0.03  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension8   0.06  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension8  -0.13  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension8  -0.22  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension8  -0.03  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension8   0.10  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension8  -0.02  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension8   0.14  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension8   0.32  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension8   0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension8  -0.02  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension8  -0.04  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension8   0.07  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension8  -0.04  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension8  -0.02  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension8   0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension8   0.08  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension8  -0.03  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension8  -0.04  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension8   0.10  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension8  -0.04  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension8  -0.03  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension8   0.08  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension8   0.24  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension8  -0.24  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension8  -0.19  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension8  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension8   0.05  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension8   0.07  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension8   0.06  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension8   0.09  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension8   0.02  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension8  -0.04  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension8   0.03  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension8  -0.04  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension8   0.02  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension8   0.09  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension9   0.03  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension9  -0.03  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension9  -0.00  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension9   0.08  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension9  -0.00  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension9  -0.03  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension9   0.03  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension9   0.06  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension9   0.10  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension9   0.02  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension9  -0.17  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension9  -0.04  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension9   0.13  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension9   0.18  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension9   0.14  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension9   0.15  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension9  -0.06  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension9  -0.03  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension9  -0.06  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension9   0.15  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension9   0.14  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension9   0.09  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension9   0.07  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension9   0.02  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension9  -0.14  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension9   0.02  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension9   0.07  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension9   0.09  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension9  -0.05  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension9  -0.08  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension9  -0.04  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension9   0.04  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension9  -0.01  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension9   0.07  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension9   0.15  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension9   0.01  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension9  -0.11  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension9  -0.06  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension9   0.16  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension9  -0.14  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension9  -0.02  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension9   0.13  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension9  -0.03  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension9  -0.08  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension9  -0.03  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension9   0.17  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension9  -0.03  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension9  -0.08  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension9  -0.03  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension9   0.08  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension9   0.12  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension9   0.32  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension9  -0.22  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension9  -0.28  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension9  -0.04  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension9   0.12  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension9   0.09  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension9   0.06  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension9  -0.07  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension9   0.07  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension9  -0.07  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension9   0.06  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension9   0.09  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension9   0.05  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension9   0.02  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension9  -0.00  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension9  -0.02  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension9  -0.00  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension9   0.02  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension9   0.05  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension9  -0.26  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension9   0.29  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension9   0.17  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension9  -0.07  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension9  -0.17  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension9  -0.19  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension9  -0.12  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension9  -0.01  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension9  -0.05  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension9  -0.04  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension9   0.11  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension9  -0.04  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension9  -0.05  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension9  -0.01  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension10   0.09  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension10   0.07  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension10   0.14  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension10  -0.00  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension10  -0.14  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension10  -0.07  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension10  -0.09  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension10   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension10   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension10   0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension10  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension10  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension10  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension10  -0.00  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension10   0.11  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension10   0.09  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension10   0.12  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension10  -0.00  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension10  -0.12  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension10  -0.09  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension10  -0.11  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension10   0.09  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension10   0.15  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension10   0.21  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension10  -0.00  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension10  -0.21  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension10  -0.15  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension10  -0.09  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension10  -0.00  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension10   0.00  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension10  -0.00  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension10  -0.00  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension10   0.00  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension10   0.00  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension10   0.00  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension10  -0.00  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension10  -0.00  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension10  -0.00  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension10  -0.00  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension10   0.00  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension10   0.00  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension10   0.00  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension10  -0.31  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension10  -0.29  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension10  -0.08  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension10  -0.00  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension10   0.08  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension10   0.29  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension10   0.31  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension10   0.00  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension10   0.00  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension10   0.00  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension10  -0.00  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension10  -0.00  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension10  -0.00  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension10  -0.00  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension10   0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension10   0.12  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension10   0.30  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension10   0.00  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension10  -0.30  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension10  -0.12  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension10  -0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension10   0.03  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension10  -0.07  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension10  -0.18  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension10  -0.00  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension10   0.18  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension10   0.07  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension10  -0.03  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension10   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension10  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension10  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension10  -0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension10   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension10   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension10   0.00  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension10  -0.09  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension10  -0.09  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension10  -0.09  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension10  -0.00  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension10   0.09  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension10   0.09  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension10   0.09  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension11   0.14  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension11   0.04  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension11   0.02  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension11  -0.25  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension11   0.02  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension11   0.04  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension11   0.14  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension11   0.02  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension11   0.17  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension11   0.03  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension11  -0.16  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension11  -0.12  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension11  -0.12  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension11  -0.10  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension11   0.05  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension11  -0.09  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension11   0.03  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension11  -0.00  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension11   0.03  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension11  -0.09  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension11   0.05  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension11  -0.04  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension11  -0.04  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension11   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension11  -0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension11   0.02  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension11  -0.04  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension11  -0.04  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension11  -0.19  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension11  -0.02  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension11  -0.02  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension11  -0.21  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension11   0.12  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension11   0.27  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension11   0.21  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension11  -0.12  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension11  -0.01  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension11  -0.05  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension11  -0.08  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension11   0.16  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension11   0.07  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension11  -0.01  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension11   0.06  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension11   0.13  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension11   0.04  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension11  -0.26  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension11   0.04  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension11   0.12  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension11   0.06  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension11   0.02  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension11   0.15  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension11   0.17  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension11  -0.23  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension11  -0.05  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension11  -0.05  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension11  -0.12  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension11   0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension11  -0.04  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension11  -0.03  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension11   0.08  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension11  -0.03  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension11  -0.04  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension11   0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension11   0.20  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension11   0.16  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension11   0.02  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension11  -0.25  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension11   0.02  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension11   0.16  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension11   0.20  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension11   0.10  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension11  -0.07  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension11  -0.13  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension11  -0.07  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension11   0.05  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension11   0.09  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension11   0.09  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension11   0.03  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension11  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension11   0.01  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension11   0.00  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension11   0.01  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension11  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension11   0.03  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0
+
+dimension12   0.13  pdim 1 (+ other has turn - self has turn) frac in -10.0~-2.4
+dimension12  -0.00  pdim 1 (+ other has turn - self has turn) frac in -2.4~-1.4
+dimension12  -0.00  pdim 1 (+ other has turn - self has turn) frac in -1.4~-0.4
+dimension12   0.02  pdim 1 (+ other has turn - self has turn) frac in -0.4~0.4
+dimension12  -0.00  pdim 1 (+ other has turn - self has turn) frac in 0.4~1.4
+dimension12  -0.00  pdim 1 (+ other has turn - self has turn) frac in 1.4~2.4
+dimension12   0.13  pdim 1 (+ other has turn - self has turn) frac in 2.4~10.0
+dimension12   0.18  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -10.0~-2.4
+dimension12  -0.06  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -2.4~-1.4
+dimension12  -0.09  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -1.4~-0.4
+dimension12   0.13  pdim 2 (+ enthusiasm overlap - silence/delay) frac in -0.4~0.4
+dimension12   0.01  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 0.4~1.4
+dimension12  -0.12  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 1.4~2.4
+dimension12  -0.17  pdim 2 (+ enthusiasm overlap - silence/delay) frac in 2.4~10.0
+dimension12   0.23  pdim 3 (+ turn yield - turn take) frac in -10.0~-2.4
+dimension12  -0.00  pdim 3 (+ turn yield - turn take) frac in -2.4~-1.4
+dimension12  -0.18  pdim 3 (+ turn yield - turn take) frac in -1.4~-0.4
+dimension12   0.22  pdim 3 (+ turn yield - turn take) frac in -0.4~0.4
+dimension12  -0.18  pdim 3 (+ turn yield - turn take) frac in 0.4~1.4
+dimension12  -0.00  pdim 3 (+ turn yield - turn take) frac in 1.4~2.4
+dimension12   0.23  pdim 3 (+ turn yield - turn take) frac in 2.4~10.0
+dimension12   0.16  pdim 4 (+ backchannelling - talking/BC cueing) frac in -10.0~-2.4
+dimension12  -0.04  pdim 4 (+ backchannelling - talking/BC cueing) frac in -2.4~-1.4
+dimension12   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in -1.4~-0.4
+dimension12  -0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in -0.4~0.4
+dimension12   0.01  pdim 4 (+ backchannelling - talking/BC cueing) frac in 0.4~1.4
+dimension12  -0.04  pdim 4 (+ backchannelling - talking/BC cueing) frac in 1.4~2.4
+dimension12   0.16  pdim 4 (+ backchannelling - talking/BC cueing) frac in 2.4~10.0
+dimension12   0.21  pdim 5 (+ topic continuation - topic closing) frac in -10.0~-2.4
+dimension12   0.13  pdim 5 (+ topic continuation - topic closing) frac in -2.4~-1.4
+dimension12  -0.00  pdim 5 (+ topic continuation - topic closing) frac in -1.4~-0.4
+dimension12  -0.03  pdim 5 (+ topic continuation - topic closing) frac in -0.4~0.4
+dimension12  -0.04  pdim 5 (+ topic continuation - topic closing) frac in 0.4~1.4
+dimension12  -0.02  pdim 5 (+ topic continuation - topic closing) frac in 1.4~2.4
+dimension12  -0.10  pdim 5 (+ topic continuation - topic closing) frac in 2.4~10.0
+dimension12   0.00  pdim 6 (+ positive assessment - topic development) frac in -10.0~-2.4
+dimension12   0.07  pdim 6 (+ positive assessment - topic development) frac in -2.4~-1.4
+dimension12   0.02  pdim 6 (+ positive assessment - topic development) frac in -1.4~-0.4
+dimension12   0.01  pdim 6 (+ positive assessment - topic development) frac in -0.4~0.4
+dimension12  -0.05  pdim 6 (+ positive assessment - topic development) frac in 0.4~1.4
+dimension12  -0.01  pdim 6 (+ positive assessment - topic development) frac in 1.4~2.4
+dimension12  -0.12  pdim 6 (+ positive assessment - topic development) frac in 2.4~10.0
+dimension12   0.13  pdim 7 (+ indifference - empathy bid) frac in -10.0~-2.4
+dimension12   0.04  pdim 7 (+ indifference - empathy bid) frac in -2.4~-1.4
+dimension12  -0.03  pdim 7 (+ indifference - empathy bid) frac in -1.4~-0.4
+dimension12   0.02  pdim 7 (+ indifference - empathy bid) frac in -0.4~0.4
+dimension12  -0.03  pdim 7 (+ indifference - empathy bid) frac in 0.4~1.4
+dimension12   0.04  pdim 7 (+ indifference - empathy bid) frac in 1.4~2.4
+dimension12   0.13  pdim 7 (+ indifference - empathy bid) frac in 2.4~10.0
+dimension12   0.17  pdim 8 (+ bipartite construction - fillers) frac in -10.0~-2.4
+dimension12   0.05  pdim 8 (+ bipartite construction - fillers) frac in -2.4~-1.4
+dimension12  -0.11  pdim 8 (+ bipartite construction - fillers) frac in -1.4~-0.4
+dimension12   0.07  pdim 8 (+ bipartite construction - fillers) frac in -0.4~0.4
+dimension12   0.08  pdim 8 (+ bipartite construction - fillers) frac in 0.4~1.4
+dimension12  -0.04  pdim 8 (+ bipartite construction - fillers) frac in 1.4~2.4
+dimension12  -0.16  pdim 8 (+ bipartite construction - fillers) frac in 2.4~10.0
+dimension12   0.24  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -10.0~-2.4
+dimension12   0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -2.4~-1.4
+dimension12  -0.14  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -1.4~-0.4
+dimension12   0.19  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in -0.4~0.4
+dimension12  -0.14  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 0.4~1.4
+dimension12   0.05  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 1.4~2.4
+dimension12   0.24  pdim 9 (+ p.a. turn yield - p.a. turn take) frac in 2.4~10.0
+dimension12   0.07  pdim10 (+ fillers - late peaks) frac in -10.0~-2.4
+dimension12  -0.04  pdim10 (+ fillers - late peaks) frac in -2.4~-1.4
+dimension12  -0.07  pdim10 (+ fillers - late peaks) frac in -1.4~-0.4
+dimension12   0.17  pdim10 (+ fillers - late peaks) frac in -0.4~0.4
+dimension12  -0.07  pdim10 (+ fillers - late peaks) frac in 0.4~1.4
+dimension12  -0.04  pdim10 (+ fillers - late peaks) frac in 1.4~2.4
+dimension12   0.07  pdim10 (+ fillers - late peaks) frac in 2.4~10.0
+dimension12   0.05  pdim11 (+ bookended narrow pitch - meta comment) frac in -10.0~-2.4
+dimension12  -0.05  pdim11 (+ bookended narrow pitch - meta comment) frac in -2.4~-1.4
+dimension12  -0.03  pdim11 (+ bookended narrow pitch - meta comment) frac in -1.4~-0.4
+dimension12  -0.02  pdim11 (+ bookended narrow pitch - meta comment) frac in -0.4~0.4
+dimension12  -0.03  pdim11 (+ bookended narrow pitch - meta comment) frac in 0.4~1.4
+dimension12  -0.03  pdim11 (+ bookended narrow pitch - meta comment) frac in 1.4~2.4
+dimension12   0.04  pdim11 (+ bookended narrow pitch - meta comment) frac in 2.4~10.0
+dimension12   0.13  pdim12 (+ receiving action cue - minor third cue) frac in -10.0~-2.4
+dimension12  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in -2.4~-1.4
+dimension12  -0.12  pdim12 (+ receiving action cue - minor third cue) frac in -1.4~-0.4
+dimension12   0.22  pdim12 (+ receiving action cue - minor third cue) frac in -0.4~0.4
+dimension12  -0.12  pdim12 (+ receiving action cue - minor third cue) frac in 0.4~1.4
+dimension12  -0.03  pdim12 (+ receiving action cue - minor third cue) frac in 1.4~2.4
+dimension12   0.13  pdim12 (+ receiving action cue - minor third cue) frac in 2.4~10.0

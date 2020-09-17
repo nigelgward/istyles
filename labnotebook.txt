@@ -1048,25 +1048,15 @@ Aug 31 QuestionPro work
    renamed Jonathan's correlations.m file as anaPerceptions.m, since
    it analyzes perceptions
 
-September 11
-  Here is the process for creating a QuestionPro Survey
-  1. decide whether to take the stimuli from the testset or trainset
-     run deriveISspace('test2Stats.csv' ...
-        or
-	deriveISspace('train-30sec.csv', ...
-  2. edit the line with "mtPredsFd" to open the correct output file 
-
 
 
 To Do: 
 
-   test all the code and verify that it matches the documentation
-
-   git push 
+   enter the edits to anaPerceptions.m
+   test computeStyleParms vs the documentation 
 
    document and test the process of creating stimuli, loading to
    questionPro, downloading results and running anaPerceptions
-
 
    in QuestionPro, 
      add a new final comment field, and one after the attention check

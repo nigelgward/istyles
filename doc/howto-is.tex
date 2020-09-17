@@ -50,23 +50,13 @@
 \section{Overview}    \label{sec:overview}
 
 This toolset supports the analysis of interaction styles in spoken
-dialog.  To quote from the abstract of  my as-yet-published paper:
+dialog.  While people clearly vary in interaction styles, a
+comprehensive model of the space of variation has been lacking.
 
-\begin{quote}
-  In spoken dialog, people clearly vary in their interaction styles,
-  but a comprehensive model of the space of variation has been
-  lacking.  To address this need, I applied Principal Component
-  Analysis, using features designed to capture aspects of
-  interaction-related prosodic behaviors, to tens of thousands of conversation
-  fragments from the Switchboard corpus of American English telephone
-  speech. 
-\end{quote}
-
-
-This toolset has so far been used only for the analyses reported in
-the paper, but is designed to generally support computational
-analyses of interaction styles, for both scientific and practical
-purposes, as discussed in the paper.
+While this toolset has so far been used only for the analysis in one
+paper, as yet unpublished, it is designed to generally support
+computational analyses of interaction styles, for both scientific and
+practical purposes.
 
 Specifically, this code enables one to:
 
@@ -81,13 +71,13 @@ Specifically, this code enables one to:
   style dimensions
 \item give a new corpus or sub-corpus, characterize its mean and
   variation on each of the dimensions **pending**
-\item output stimuli etc. to use in validation experiments
+\item output stimuli and predictions to use in validation experiments
 \end{itemize}
 
-This document serves mostly to overview the workflow and the specific
-Matlab functions to call for each step.  It should be read after
-getting the big picture from the paper.  You'll probably also want to
-skim the midlevel toolkit documentation.  Then to learn how to
+This document serves mostly to overview the workflow and to name the
+specific Matlab functions to call for each step.  It should be read
+after getting the big picture from the paper.  You'll probably also
+want to skim the Midlevel Toolkit documentation.  Then to learn how to
 actually run things, read the comments in the code. This document is a
 work in progress; comments and suggestions are welcome.
 
@@ -95,12 +85,13 @@ work in progress; comments and suggestions are welcome.
 %==========================================================
 \section{Getting the Code}  \label{sec:starting}
 
-This code was written in Matlab and runs on Matlab version 2019.
-
 The code is at {\tt https://github.com/nigelgward/istyles }.  It requires
 %\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
 the Midlevel Toolkit, which is available at 
-{\tt https://github.com/nigelgward/midlevel/ }, complete with documentation. 
+{\tt https://github.com/nigelgward/midlevel/ }.
+
+
+This code is mostly written in Matlab and runs on Matlab version 2019.
 
 %==========================================================
 \section{Terminology}
@@ -121,7 +112,7 @@ Create {\tt wav}-format copies of each audio file using {\tt
 Create the pitch files using {\tt midlevel/src/reaperize.sh} .
 
 Decide how to split the data into subsets, and in {\it splits/} create
-an index file for each. How I did this for Switchboard is described in
+an index file for each subset. How I did this for Switchboard is described in
 {\tt labnotes.txt}.  Each index file contains a one-per-line listing
 of the audio files in that set.
 
@@ -130,63 +121,56 @@ Run {\tt prepMetadata.sh}.
 %==========================================================
 \section{Subdirectories}
 
-Code 
-\begin{description}   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-\item{code} -- source code, mostly matlab, with some bash and aw k
-\item{reaper} --  David Talkin's pitch tracker 
-\end{description}
+\begin{tabular}{l}
+Code \\
+~~~ code -- source code, mostly matlab, with some bash and awk \\
+~~~ reaper --  David Talkin's pitch tracker  \\
+\\
+Documentation \\
+~~~ doc -- this documentation \\
+~~~ paper -- draft of a journal article \\
+\\
+Metadata and model parameters  \\
+~~~ splits -- files listing the data subsets: training, test ... \\
+~~~ swbd-various -- switchboard metadata and counts \\
+~~~ pcdparms -- parameters relating to the prosodic constructions: \\
+~~~ ~~~ how to compute and gather stats over them \\
+~~~ experiment -- plans for the experiment, also {\tt scales-to-dims-v4.txt} \\
+\end{tabular}
 
-Documentation subdirectories 
-\begin{description}  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-\item{doc} -- this documentation
-\item{paper} -- draft of a journal article
-\end{description}
-
-Metadata and model parameters 
-\begin{description}  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-\item{splits} -- files listing the data subsets: training, test ...
-\item{swbd-various} -- switchboard metadata and counts
-\item{pcdparms} -- parameters relating to the prosodic constructions: how to compute and gather stats over 
-\item{experiment} -- plans for the experiment, also {\tt scales-to-dims-v4.txt}
-\end{description} 
-
-Data and data products
-\begin{description}  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-\item{...} --- the switchboard data itself is on another drive
-\item{pcdstats} -- the statistics on the prosodic construction distributions over a corpus
-\item{wordstats} -- lexical occurrence statistics etc for each pole of the training-data
-\item{clips-for-experiment} -- audio files to be uploaded to
-  questionPro.  Includes hand-generated files for the instructions
-  etc., plus copies of the various stimulus-sets
-\item{trainIStyles} -- all sorts of stuff on the training data 
-\item{testIStyles} -- all sorts of  stuff on the test data 
-\end{description}
-
-Test data, etc. 
-
-\begin{description}   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-\item{shortTests}  -- sample wav files etc., mostly for testing {\tt computStyleParams}
-\item{f0reaper} -- a few f0 files for testing reaper and the way its called
-\item{stats} -- former working space for various intermediate files and results
-\item{precious} -- copies of things that took a long time to compute
-\item{illustrations} -- audio clips for use in talks
-\item{old} --- dead code and obsolete data
-\item{tmp} --- temporary files 
-\end{description}
+\begin{tabular}{l}
+Data and data products \\
+~~~ {\it elsewhere} --- the Switchboard data itself is on another drive\\ 
+~~~ pcdstats -- the statistics on the prosodic construction distributions over a subcorpus \\
+~~~ wordstats -- lexical occurrence statistics for each pole of each training-data dimension \\
+~~~ clips-for-experiment -- audio files to be uploaded to QuestionPro.  \\
+~~~ ~~~ Includes hand-generated files for the instructions etc., \\
+~~~ ~~~ plus copies of the various stimulus-sets \\
+~~~ trainIStyles -- all sorts of stuff on the training data  \\
+~~~ testIStyles -- all sorts of  stuff on the test data  \\
+\\
+Test data, miscellaney \\
+~~~ shortTests  -- sample wav files etc., mostly for testing {\tt computStyleParams} \\
+~~~ f0reaper -- a few F0 files for testing reaper and the way its called \\
+~~~ precious -- copies of things that took a long time to compute \\
+~~~ illustrations -- audio clips for use in talks \\
+~~~ old --- dead code and obsolete data \\
+~~~ tmp --- temporary files 
+\end{tabular}
 
 
 
 %==========================================================
 \section{Building the Model}
 
-Open Matlab and change to the {\tt code} subdirectory (since that's
-where {\tt rotationspec.mat} is found).
+Open Matlab and change to the {\tt istyles} directory.
+
 
 Run {\tt computeStyleParams.m('splits/trainset.txt',
   'trainStats.csv')} to create the features for all files in the
-training set.  The output, here {\tt trainStats.csv}, is sometimes
-called a PCDS file, as it contains ``prosodic-construction distribution
-statistics'' (specifically the bin frequencies).
+training set.  The output, here {\tt trainStats.csv}, is
+ a PCDS file, as it contains ``prosodic-construction distribution
+statistics,'' specifically the bin frequencies.
 
 This will take time (12 hours on a 8GB 3.6GHz machine), so if it crashes,
 be prepared to look at {\tt trainStats.csv} to see how far it got, and
@@ -197,7 +181,7 @@ conversations.
 The {\tt computeStyleParams} function has three hidden dependencies,
 in which it reads data from hardcoded filenames.  These files are in
 {\tt pcdparams}.  The first two, {\tt fsfile} and {\tt rsfile} specify
-how to compute the prosodic dimensions, as described in the midlevel
+how to compute the prosodic dimensions, as described in the Midlevel
 documentation. The third is {\tt sifile}, listing the standard
 deviations of the prosodic dimensions, as derived from the pbook data,
 and is used to determine the ranges of the bins.  These should be held
@@ -217,19 +201,18 @@ paper.  It also pops up a figure that will go in the paper (when {\tt
 %==========================================================
 \section{Interpreting the Model's Dimensions}
 
-First examine {\tt loadingsTables.txt} a human-readable file written
+First examine {\tt loadingsTables.txt}, a human-readable file written
 by {\tt deriveISpace}.  This shows, for each dimension (each
 interaction-style dimension) the loadings on the behavioral features
 (the PCDS features).
 
 Examine the various files with names starting with {\tt isratios},
-showing how which words are characteristic of each pole of each
+which show which words are characteristic of each pole of each
 dimension.  These can be examined, for example by {\tt sort -n
-  isratios1hi.txt | more}.  Once computed, it's nice to save them in a
-safe place, for example by moving them all to {\tt wordstats}.
+  isratios1hi.txt | more}.  
 
 Use LIWC on the word list files, like {\tt idim7loWords.txt}, to learn
-which word categories ar most common for which poles.
+which word categories are most common for which poles.
 
 {\tt deriveIStyles.m} creates a script to generate informative audio
 fragments: run this with {\tt bash manySoxCmds.sh}.  These can then be
@@ -239,21 +222,6 @@ stimuli, at one time thought useful for the human-perceptions
 experiment.)  Once created, it's may be nice to move these all
 somewhere safe, e.g. {\tt exemplars}.
 
-
-%==========================================================
-\section{Validating the Model by Human-Subjects Experiments}
-
-{\tt deriveIStyles.m} also a script {\tt mtSoxCmds.shs} to generate
-stimuli, and {\tt preds-for-mturk} files to document its predictions
-for those stimuli.
-
-You'll then copy the stimuli into QuestionPro ...
-
-Then you'll link to mTurk and get human judgments
-
-Then you'll download the questionPro results, following the
-instructions in the comments of {\tt anaPerceptions.m}, and process
-them with {\tt anaPerceptions.m} to evaluate the extent to which the predictions match human judgments. 
 
 
 %==========================================================
@@ -267,16 +235,35 @@ data.
 In {\tt code} run {\tt computeStyleParams.m('splits/testset2.txt',
   'test2Stats.csv')}.  This will take  3--4 hours.
 
-** not tested yet **
-
 In {\tt stats} run {\tt deriveISspace('test2Stats.csv', false,
   'trainIsNormRot.mat', 'testIStyles')}, importantly specifying {\tt
   false} for the second parameter.
 
-This will not change the model, but it will apply it to the testset
-data, most usefully generating a {\tt sox-commands.sh} file to use to
-generate fragments to use as stimuli, and the predicted scores to
-compare to the turker-assigned stores. 
+This will, instead of making a new model, apply tye existing model
+(the {\tt IsNormRot} file) to the testset data, most usefully
+generating a {\tt sox-commands.sh} file to use to generate fragments
+to use as stimuli, and the predicted scores to compare to the
+turker-assigned stores.
+
+
+%==========================================================
+\section{Validating the Model by Human-Subjects Experiments}
+
+{\tt deriveIStyles.m} also writes a script {\tt mtSoxCmds.shs} to generate
+stimuli, and {\tt preds-for-mturk} files to document its predictions
+for those stimuli.  
+
+For testing the procedure, use the {\tt trainset-out} stimuli, then
+for the final runs, use the {\tt testset-out} stimuli.
+
+You will copy the stimuli into QuestionPro ...
+
+Then you'll link to mTurk and get human judgments ...
+
+Then you'll download the questionPro results, following the
+instructions in the comments of {\tt anaPerceptions.m}, and process
+them with {\tt anaPerceptions.m} to evaluate the extent to which the predictions match human judgments. 
+
 
 
 %==========================================================

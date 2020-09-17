@@ -1,0 +1,313 @@
+Interaction Style Dimension Loadings, generated 15-Sep-2020 08:49:52
+
+IS Dimension 1   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn -0.02 -0.05  0.03  -0.05   0.03 -0.05 -0.02  other has turn
+
+          silence  0.10  0.19  0.03  -0.19  -0.19 -0.13 -0.07  overlap
+
+        turn take -0.13 -0.18 -0.02   0.17  -0.02 -0.18 -0.13  turn yield
+
+backchannel cueing -0.11 -0.12 -0.00   0.14  -0.00 -0.12 -0.11  backchannelling
+
+    topic closing -0.02 -0.01  0.12   0.09  -0.15 -0.17 -0.12  topic continuation
+
+topic development -0.05 -0.03  0.09   0.08  -0.11 -0.12 -0.09  positive assessment
+
+      empathy bid -0.05 -0.04  0.01   0.03   0.01 -0.04 -0.05  indifference
+
+turn-hold fillers  0.02  0.10  0.21  -0.07  -0.21 -0.18 -0.10  bipartite construction
+
+   long turn take -0.12 -0.17 -0.04   0.20  -0.04 -0.17 -0.11  long turn yield
+
+       late peaks -0.11 -0.13 -0.02   0.18  -0.02 -0.13 -0.11  turn-initial fillers
+
+     meta comment  0.08 -0.06 -0.08  -0.05  -0.03 -0.02 -0.01  bookended narrow pitch
+
+  minor third cue -0.12 -0.15 -0.03   0.20  -0.03 -0.15 -0.12  receiving action cue
+
+IS Dimension 2   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn -0.01 -0.17 -0.28  -0.00   0.29  0.17  0.01  other has turn
+
+          silence  0.00  0.00 -0.00  -0.00  -0.00 -0.00 -0.00  overlap
+
+        turn take -0.02  0.00  0.20   0.00  -0.20 -0.00  0.02  turn yield
+
+backchannel cueing -0.08 -0.18 -0.27   0.00   0.27  0.18  0.08  backchannelling
+
+    topic closing -0.00  0.00  0.00  -0.00  -0.00 -0.00 -0.00  topic continuation
+
+topic development -0.00 -0.00 -0.00   0.00   0.00 -0.00 -0.00  positive assessment
+
+      empathy bid -0.06 -0.17 -0.28   0.00   0.28  0.17  0.06  indifference
+
+turn-hold fillers  0.00  0.00  0.00  -0.00  -0.00 -0.00 -0.00  bipartite construction
+
+   long turn take  0.03  0.10  0.21   0.00  -0.21 -0.10 -0.03  long turn yield
+
+       late peaks -0.02 -0.02  0.03   0.00  -0.03  0.02  0.02  turn-initial fillers
+
+     meta comment  0.00 -0.00 -0.00  -0.00  -0.00 -0.00  0.00  bookended narrow pitch
+
+  minor third cue  0.07  0.15  0.19   0.00  -0.19 -0.15 -0.07  receiving action cue
+
+IS Dimension 3   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn -0.00 -0.14  0.04   0.12   0.04 -0.14 -0.00  other has turn
+
+          silence  0.15  0.02 -0.26   0.10   0.17  0.16  0.11  overlap
+
+        turn take -0.09 -0.08 -0.04   0.13  -0.04 -0.08 -0.09  turn yield
+
+backchannel cueing -0.09 -0.10 -0.00   0.13  -0.00 -0.10 -0.09  backchannelling
+
+    topic closing  0.04 -0.03 -0.09  -0.01   0.06  0.12  0.13  topic continuation
+
+topic development  0.21  0.26 -0.12  -0.25   0.17  0.27  0.18  positive assessment
+
+      empathy bid -0.01 -0.03 -0.02   0.08  -0.02 -0.03 -0.01  indifference
+
+turn-hold fillers  0.13  0.20 -0.06  -0.23   0.12  0.21  0.15  bipartite construction
+
+   long turn take -0.07 -0.10 -0.03   0.12  -0.03 -0.10 -0.07  long turn yield
+
+       late peaks  0.01 -0.02 -0.03   0.08  -0.03 -0.02  0.01  turn-initial fillers
+
+     meta comment -0.03 -0.00  0.08   0.04   0.01  0.01  0.01  bookended narrow pitch
+
+  minor third cue -0.05 -0.08 -0.03   0.14  -0.03 -0.08 -0.05  receiving action cue
+
+IS Dimension 4   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn -0.03 -0.05  0.06   0.00  -0.06  0.05  0.03  other has turn
+
+          silence -0.00 -0.00  0.00   0.00   0.00  0.00  0.00  overlap
+
+        turn take -0.04 -0.08 -0.19   0.00   0.19  0.08  0.04  turn yield
+
+backchannel cueing -0.01  0.00  0.05  -0.00  -0.05 -0.00  0.01  backchannelling
+
+    topic closing  0.00  0.00  0.00  -0.00  -0.00 -0.00 -0.00  topic continuation
+
+topic development  0.00  0.00  0.00  -0.00  -0.00 -0.00 -0.00  positive assessment
+
+      empathy bid  0.07  0.13  0.13  -0.00  -0.12 -0.13 -0.06  indifference
+
+turn-hold fillers  0.00  0.00  0.00  -0.00   0.00  0.00  0.00  bipartite construction
+
+   long turn take  0.06  0.10  0.12   0.00  -0.12 -0.10 -0.06  long turn yield
+
+       late peaks -0.16 -0.30 -0.39  -0.00   0.39  0.30  0.16  turn-initial fillers
+
+     meta comment -0.00  0.00  0.00   0.00   0.00  0.00  0.00  bookended narrow pitch
+
+  minor third cue  0.11  0.18  0.26   0.00  -0.26 -0.18 -0.11  receiving action cue
+
+IS Dimension 5   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn  0.01  0.01 -0.01   0.06  -0.01  0.01  0.01  other has turn
+
+          silence  0.14  0.17 -0.07  -0.12  -0.10 -0.06 -0.03  overlap
+
+        turn take  0.04  0.05 -0.00  -0.04  -0.00  0.05  0.04  turn yield
+
+backchannel cueing  0.03  0.05  0.00  -0.06   0.00  0.05  0.03  backchannelling
+
+    topic closing -0.14 -0.32 -0.25   0.28   0.20  0.08  0.01  topic continuation
+
+topic development -0.03 -0.03 -0.19  -0.00   0.19  0.04  0.00  positive assessment
+
+      empathy bid -0.08 -0.15 -0.03   0.26  -0.03 -0.15 -0.08  indifference
+
+turn-hold fillers  0.00 -0.02 -0.05   0.05   0.03 -0.02 -0.03  bipartite construction
+
+   long turn take  0.05  0.06  0.02  -0.08   0.02  0.06  0.05  long turn yield
+
+       late peaks -0.03 -0.05 -0.03   0.12  -0.03 -0.05 -0.03  turn-initial fillers
+
+     meta comment  0.34 -0.29 -0.26  -0.17  -0.12 -0.09 -0.05  bookended narrow pitch
+
+  minor third cue  0.03  0.03  0.01  -0.05   0.01  0.03  0.03  receiving action cue
+
+IS Dimension 6   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn  0.01  0.12 -0.01  -0.25  -0.01  0.12  0.01  other has turn
+
+          silence -0.18 -0.21  0.11   0.15   0.08  0.04  0.02  overlap
+
+        turn take -0.02 -0.15 -0.13   0.29  -0.13 -0.15 -0.02  turn yield
+
+backchannel cueing -0.05 -0.09  0.01   0.05   0.01 -0.09 -0.05  backchannelling
+
+    topic closing -0.06 -0.19 -0.25   0.15   0.23  0.11  0.05  topic continuation
+
+topic development -0.07 -0.19 -0.21   0.19   0.06 -0.04 -0.02  positive assessment
+
+      empathy bid -0.06 -0.08 -0.00   0.10  -0.00 -0.08 -0.06  indifference
+
+turn-hold fillers -0.11 -0.20 -0.05   0.16   0.01  0.01  0.01  bipartite construction
+
+   long turn take -0.04 -0.09 -0.08   0.20  -0.08 -0.09 -0.04  long turn yield
+
+       late peaks  0.03  0.04  0.01  -0.06   0.01  0.04  0.03  turn-initial fillers
+
+     meta comment -0.17  0.16  0.10   0.07   0.07  0.05  0.03  bookended narrow pitch
+
+  minor third cue -0.00 -0.03 -0.04   0.10  -0.04 -0.03 -0.00  receiving action cue
+
+IS Dimension 7   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn  0.03 -0.03 -0.03   0.24  -0.03 -0.03  0.03  other has turn
+
+          silence  0.12  0.10 -0.13  -0.03   0.03 -0.02 -0.03  overlap
+
+        turn take -0.01  0.02  0.01  -0.03   0.01  0.02 -0.01  turn yield
+
+backchannel cueing  0.00  0.01 -0.00  -0.00  -0.00  0.01  0.00  backchannelling
+
+    topic closing -0.01 -0.06 -0.03   0.10  -0.01 -0.03 -0.05  topic continuation
+
+topic development -0.05 -0.08 -0.04   0.11  -0.03 -0.08 -0.05  positive assessment
+
+      empathy bid -0.04 -0.10 -0.03   0.18  -0.03 -0.10 -0.04  indifference
+
+turn-hold fillers  0.05  0.11  0.11  -0.06  -0.12 -0.11 -0.07  bipartite construction
+
+   long turn take  0.02  0.01  0.01  -0.02   0.01  0.01  0.02  long turn yield
+
+       late peaks  0.10  0.05 -0.03  -0.01  -0.03  0.05  0.10  turn-initial fillers
+
+     meta comment -0.05 -0.10  0.15   0.39   0.48  0.42  0.27  bookended narrow pitch
+
+  minor third cue  0.08  0.07  0.00  -0.08   0.00  0.07  0.08  receiving action cue
+
+IS Dimension 8   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn  0.05  0.03 -0.01   0.00  -0.01  0.03  0.05  other has turn
+
+          silence  0.01  0.10 -0.06  -0.16   0.06  0.30  0.34  overlap
+
+        turn take -0.00 -0.07 -0.02   0.08  -0.02 -0.07 -0.00  turn yield
+
+backchannel cueing  0.01 -0.03 -0.03   0.12  -0.03 -0.03  0.01  backchannelling
+
+    topic closing  0.10  0.04  0.09  -0.07  -0.15  0.05  0.24  topic continuation
+
+topic development -0.05 -0.21  0.10   0.16  -0.21 -0.07  0.19  positive assessment
+
+      empathy bid  0.06  0.03  0.01  -0.06   0.01  0.03  0.06  indifference
+
+turn-hold fillers -0.13 -0.22 -0.03   0.10  -0.02  0.14  0.32  bipartite construction
+
+   long turn take  0.05 -0.02 -0.04   0.07  -0.04 -0.02  0.05  long turn yield
+
+       late peaks  0.08 -0.03 -0.04   0.10  -0.04 -0.03  0.08  turn-initial fillers
+
+     meta comment  0.24 -0.24 -0.19  -0.00   0.05  0.07  0.06  bookended narrow pitch
+
+  minor third cue  0.09  0.02 -0.04   0.03  -0.04  0.02  0.09  receiving action cue
+
+IS Dimension 9   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn  0.03 -0.03 -0.00   0.08  -0.00 -0.03  0.03  other has turn
+
+          silence  0.06  0.10  0.02  -0.17  -0.04  0.13  0.18  overlap
+
+        turn take  0.14  0.15 -0.06  -0.03  -0.06  0.15  0.14  turn yield
+
+backchannel cueing  0.09  0.07  0.02  -0.14   0.02  0.07  0.09  backchannelling
+
+    topic closing -0.05 -0.08 -0.04   0.04  -0.01  0.07  0.15  topic continuation
+
+topic development  0.01 -0.11 -0.06   0.16  -0.14 -0.02  0.13  positive assessment
+
+      empathy bid -0.03 -0.08 -0.03   0.17  -0.03 -0.08 -0.03  indifference
+
+turn-hold fillers  0.08  0.12  0.32  -0.22  -0.28 -0.04  0.12  bipartite construction
+
+   long turn take  0.09  0.06 -0.07   0.07  -0.07  0.06  0.09  long turn yield
+
+       late peaks  0.05  0.02 -0.00  -0.02  -0.00  0.02  0.05  turn-initial fillers
+
+     meta comment -0.26  0.29  0.17  -0.07  -0.17 -0.19 -0.12  bookended narrow pitch
+
+  minor third cue -0.01 -0.05 -0.04   0.11  -0.04 -0.05 -0.01  receiving action cue
+
+IS Dimension 10   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn  0.09  0.07  0.14  -0.00  -0.14 -0.07 -0.09  other has turn
+
+          silence  0.00  0.00  0.00  -0.00  -0.00 -0.00 -0.00  overlap
+
+        turn take  0.11  0.09  0.12  -0.00  -0.12 -0.09 -0.11  turn yield
+
+backchannel cueing  0.09  0.15  0.21  -0.00  -0.21 -0.15 -0.09  backchannelling
+
+    topic closing -0.00  0.00 -0.00  -0.00   0.00  0.00  0.00  topic continuation
+
+topic development -0.00 -0.00 -0.00  -0.00   0.00  0.00  0.00  positive assessment
+
+      empathy bid -0.31 -0.29 -0.08  -0.00   0.08  0.29  0.31  indifference
+
+turn-hold fillers  0.00  0.00  0.00  -0.00  -0.00 -0.00 -0.00  bipartite construction
+
+   long turn take  0.05  0.12  0.30   0.00  -0.30 -0.12 -0.05  long turn yield
+
+       late peaks  0.03 -0.07 -0.18  -0.00   0.18  0.07 -0.03  turn-initial fillers
+
+     meta comment  0.00 -0.00 -0.00  -0.00   0.00  0.00  0.00  bookended narrow pitch
+
+  minor third cue -0.09 -0.09 -0.09  -0.00   0.09  0.09  0.09  receiving action cue
+
+IS Dimension 11   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn  0.14  0.04  0.02  -0.25   0.02  0.04  0.14  other has turn
+
+          silence  0.02  0.17  0.03  -0.16  -0.12 -0.12 -0.10  overlap
+
+        turn take  0.05 -0.09  0.03  -0.00   0.03 -0.09  0.05  turn yield
+
+backchannel cueing -0.04 -0.04  0.01  -0.01   0.02 -0.04 -0.04  backchannelling
+
+    topic closing -0.19 -0.02 -0.02  -0.21   0.12  0.27  0.21  topic continuation
+
+topic development -0.12 -0.01 -0.05  -0.08   0.16  0.07 -0.01  positive assessment
+
+      empathy bid  0.06  0.13  0.04  -0.26   0.04  0.12  0.06  indifference
+
+turn-hold fillers  0.02  0.15  0.17  -0.23  -0.05 -0.05 -0.12  bipartite construction
+
+   long turn take  0.05 -0.04 -0.03   0.08  -0.03 -0.04  0.05  long turn yield
+
+       late peaks  0.20  0.16  0.02  -0.25   0.02  0.16  0.20  turn-initial fillers
+
+     meta comment  0.10 -0.07 -0.13  -0.07   0.05  0.09  0.09  bookended narrow pitch
+
+  minor third cue  0.03 -0.03  0.01   0.00   0.01 -0.03  0.03  receiving action cue
+
+IS Dimension 12   -10.0~-2.4 -2.4~-1.4 -1.4~-0.4 -0.4~0.4 0.4~1.4 1.4~2.4 2.4~10.0 
+
+    self has turn  0.13 -0.00 -0.00   0.02  -0.00 -0.00  0.13  other has turn
+
+          silence  0.18 -0.06 -0.09   0.13   0.01 -0.12 -0.17  overlap
+
+        turn take  0.23 -0.00 -0.18   0.22  -0.18 -0.00  0.23  turn yield
+
+backchannel cueing  0.16 -0.04  0.01  -0.01   0.01 -0.04  0.16  backchannelling
+
+    topic closing  0.21  0.13 -0.00  -0.03  -0.04 -0.02 -0.10  topic continuation
+
+topic development  0.00  0.07  0.02   0.01  -0.05 -0.01 -0.12  positive assessment
+
+      empathy bid  0.13  0.04 -0.03   0.02  -0.03  0.04  0.13  indifference
+
+turn-hold fillers  0.17  0.05 -0.11   0.07   0.08 -0.04 -0.16  bipartite construction
+
+   long turn take  0.24  0.05 -0.14   0.19  -0.14  0.05  0.24  long turn yield
+
+       late peaks  0.07 -0.04 -0.07   0.17  -0.07 -0.04  0.07  turn-initial fillers
+
+     meta comment  0.05 -0.05 -0.03  -0.02  -0.03 -0.03  0.04  bookended narrow pitch
+
+  minor third cue  0.13 -0.03 -0.12   0.22  -0.12 -0.03  0.13  receiving action cue

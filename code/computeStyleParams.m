@@ -7,7 +7,7 @@
 %% and saves them to a file, for later analysis of interaction styles by deriveISspace.m
 
 %% see ../papers/draft.tex for the aims of the study
-%% see ../doc/istyles.tex for documentation of the overall workflow
+%% see ../doc/howto-is.tex for documentation of the overall workflow
 %% see ../labnotes.txt for details on data selection
 
 %% This assumes that the pitch has already been computed, using sph-to-splittrack-wav.sh
@@ -23,9 +23,9 @@
 
 %% addpath:  midlevel/src,  midlevel/src/voicebox, midlevel/flowtest, istyles/code
 
-%% to test, from shortTests/, computeStyleParams('filelist.txt', 'ministats.csv');
-%% to run, edit motherDirectory, and subDirList, then
-%%      computeStyleParams('trainset.txt', 'trainsetStats.csv');
+%% to test, from istyles  computeStyleParams('filelist.txt', 'ministats.csv', true);
+%% to run, computeStyleParams('splits/trainset.txt', 'trainsetStats.csv', false);  etc.
+%%   or    computeStyleParams('splits/testset2.txt', 'testsetStats.csv', false);  etc.
 
 function computeStyleParams(toProcessListFile, statsFile, testp)
   fsfile = 'pcparams/pbook.fss';

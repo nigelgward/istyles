@@ -7,3 +7,13 @@ reaper/*
 git-notes.txt
 talk
 paper
+tmp/*
+trainset-out/exemplar*
+trainset-out/anchor*
+code/onetrack.tl
+experiment/*
+f0reaper/*
+clips-for-experiment
+pcdstats/old*
+splits/just*
+
