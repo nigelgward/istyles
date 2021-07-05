@@ -69,7 +69,7 @@ Specifically, this code enables one to:
   of interaction styles.
 \item output information to support qualitative interpretation of the
   style dimensions
-\item give a new corpus or sub-corpus, characterize its mean and
+\item given a new corpus or sub-corpus, characterize its mean and
   variation on each of the dimensions **pending**
 \item output stimuli and predictions to use in validation experiments
 \end{itemize}
@@ -123,12 +123,12 @@ Run {\tt prepMetadata.sh}.
 
 \begin{tabular}{l}
 Code \\
-~~~ code -- source code, mostly matlab, with some bash and awk \\
+~~~ src -- source code, mostly matlab, with some bash and awk \\
 ~~~ reaper --  David Talkin's pitch tracker  \\
 \\
 Documentation \\
 ~~~ doc -- this documentation \\
-~~~ paper -- draft of a journal article \\
+~~~ ../papers/istyles/ -- draft of a journal article \\
 \\
 Metadata and model parameters  \\
 ~~~ splits -- files listing the data subsets: training, test ... \\
@@ -140,11 +140,11 @@ Metadata and model parameters  \\
 
 \begin{tabular}{l}
 Data and data products \\
-~~~ {\it elsewhere} --- the Switchboard data itself is on another drive\\ 
+~~~ /cygdrive/f/nigel/comparisons/nigel/swbd --- the Switchboard data itself, at least on my machine\\ 
 ~~~ pcdstats -- the statistics on the prosodic construction distributions over a subcorpus \\
 ~~~ wordstats -- lexical occurrence statistics for each pole of each training-data dimension \\
-~~~ clips-for-experiment -- audio files to be uploaded to QuestionPro.  \\
-~~~ ~~~ Includes hand-generated files for the instructions etc., \\
+~~~ clips-for-experiment -- audio files to be uploaded to QuestionPro  \\
+~~~ ~~~ includes hand-generated files for the instructions etc., \\
 ~~~ ~~~ plus copies of the various stimulus-sets \\
 ~~~ trainIStyles -- all sorts of stuff on the training data  \\
 ~~~ testIStyles -- all sorts of  stuff on the test data  \\
@@ -165,22 +165,15 @@ Test data, miscellaney \\
 
 Open Matlab and change to the {\tt istyles} directory.
 
-
 Run {\tt computeStyleParams.m('splits/trainset.txt',
   'trainStats.csv')} to create the features for all files in the
 training set.  The output, here {\tt trainStats.csv}, is
  a PCDS file, as it contains ``prosodic-construction distribution
 statistics,'' specifically the bin frequencies.
 
-This will take time (12 hours on a 8GB 3.6GHz machine), so if it crashes,
-be prepared to look at {\tt trainStats.csv} to see how far it got, and
-edit the code to just process the conversations not already processed;
-the function will conveniently append stats for those new
-conversations.
-
-The {\tt computeStyleParams} function has three hidden dependencies,
+{\tt computeStyleParams} function three hidden dependencies,
 in which it reads data from hardcoded filenames.  These files are in
-{\tt pcdparams}.  The first two, {\tt fsfile} and {\tt rsfile} specify
+{\tt pcdparams}.  The first two, {\tt fsfile} and {\tt rsfile}, specify
 how to compute the prosodic dimensions, as described in the Midlevel
 documentation. The third is {\tt sifile}, listing the standard
 deviations of the prosodic dimensions, as derived from the pbook data,
@@ -188,14 +181,19 @@ and is used to determine the ranges of the bins.  These should be held
 constant for all analyses, unless you want to define not only a new
 interaction space but also to redefine the basic features used.
 
-\medskip
-Now, from the top-level {\tt istyles} directory run {\tt
-  deriveISspace('train-30sec.csv', true, 'trainIsNormRot.mat',
-  'trainset-out')} .  This will create the
-model and save its parameters in the specified {\tt mat} file. It will
-also print out many interesting statistics that can be copied into the
-paper.  It also pops up a figure that will go in the paper (when {\tt
-  compareWithSubsets} is uncommented).
+{\tt computeStyleParams} will take time (12 hours on a 8GB 3.6GHz
+machine).  If it crashes before completion, don't start over.
+Instead, look at {\tt trainStats.csv} to see how far it got, and edit
+the code to just process the conversations not already processed; the
+function will conveniently append stats for those new conversations.
+
+After {\tt computeStyleParams} completes, from the top-level {\tt
+  istyles} directory, run {\tt deriveISspace('train-30sec.csv', true,
+  'trainIsNormRot.mat', 'trainset-out')} .  This will create the model
+and save its parameters in the specified {\tt mat} file. It will also
+print out many interesting statistics that can be copied into the
+paper.  It also pops up a figure showing the effects of training set
+size, if {\tt compareWithSubsets} is uncommented.
 
 
 %==========================================================
@@ -214,12 +212,12 @@ dimension.  These can be examined, for example by {\tt sort -n
 Use LIWC on the word list files, like {\tt idim7loWords.txt}, to learn
 which word categories are most common for which poles.
 
-{\tt deriveIStyles.m} creates a script to generate informative audio
-fragments: run this with {\tt bash manySoxCmds.sh}.  These can then be
-listened to (training set only, of course) to help infer the meaning
-of the various dimensions.  (The script also creates some anchor
-stimuli, at one time thought useful for the human-perceptions
-experiment.)  Once created, it's may be nice to move these all
+{\tt deriveISpace.m} also creates a script to generate informative
+audio fragments: run this with {\tt bash manySoxCmds.sh}.  These can
+then be listened to (training set only, of course) to help infer the
+meaning of the various dimensions.  (The script also creates some
+anchor stimuli, at one time thought useful for the human-perceptions
+experiment.)  Once created, it may be nice to move these all
 somewhere safe, e.g. {\tt exemplars}.
 
 
@@ -232,14 +230,14 @@ experiment, which should, of course, be taken from data not used in
 training or interpreting the dimensions: thus from held out testset
 data.
 
-In {\tt code} run {\tt computeStyleParams.m('splits/testset2.txt',
+In {\tt src} run {\tt computeStyleParams.m('splits/testset2.txt',
   'test2Stats.csv')}.  This will take  3--4 hours.
 
-In {\tt stats} run {\tt deriveISspace('test2Stats.csv', false,
+Then run {\tt deriveISspace('test2Stats.csv', false,
   'trainIsNormRot.mat', 'testIStyles')}, importantly specifying {\tt
   false} for the second parameter.
 
-This will, instead of making a new model, apply tye existing model
+This will, instead of making a new model, apply the existing model
 (the {\tt IsNormRot} file) to the testset data, most usefully
 generating a {\tt sox-commands.sh} file to use to generate fragments
 to use as stimuli, and the predicted scores to compare to the
@@ -249,26 +247,67 @@ turker-assigned stores.
 %==========================================================
 \section{Validating the Model by Human-Subjects Experiments}
 
-{\tt deriveIStyles.m} also writes a script {\tt mtSoxCmds.shs} to generate
-stimuli, and {\tt preds-for-mturk} files to document its predictions
-for those stimuli.  
+The core of the experiments are the stimuli and the system's
+predictions for those stimuli.  These both are generated in sets of
+16; 4 such sets are generated.  Both are specified by {\tt
+  deriveISpace.m}, specifically, it writes a script {\tt mtSoxCmds.sh}
+which can then be run to generate all the stimuli, and it writes {\tt
+  mtPredictions.csv} file to document its predictions for those
+stimuli.  Recent versions of both are found in {\tt trainset-out} and
+{\tt testIStyles}.
 
-For testing the procedure, use the {\tt trainset-out} stimuli, then
-for the final runs, use the {\tt testset-out} stimuli.
+Judgments are obtained through QuestionPro.  To create a survey in
+QuestionPro, first copy all the stimuli for the appropriate set up to
+its Media Library.  As each 30-second clip is about 500KB, this is not
+onerous. In addition, from {\tt experiment/clips-for-experiment/},
+copy up {\tt attention-check/full-attention-check.wav}, instructing
+them to mark ``3'' for all items, and the five wav files from {\tt
+  stereo-check}.  1 and 4 play on the right, 2 and 3 on the left.
 
-You will copy the stimuli into QuestionPro ...
+Now build the audio into the survey.  Start by copying an existing
+survey. Open two browswer windows, one for the new survey, and one for
+QuestionPro's Media Library (accessible via the 3rd-from-left icon in
+the top toolbar seen when editing the survey).  For each file needed
+\begin{itemize}   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+\item in the Media Library, click on the audio you need
+\item click on the 3 dots to expand the menu, then click ``get html'' to copy the code to the clipboard
+\item then go back to the window where the survey is open 
+\item locate the relevant question and click on the up/down arrows to expand it
+\item click somewhere on the instructions and a floating toolbar appears
+\item click on the rightmost icon in that toolbar, a box with a northeast arrow, to open the editor
+\item click on the ``Source'' option at the upper left to be able to edit the html
+\item paste the clicked link in the html
+\item save 
+\end{itemize}
+
+Next, build the first survey: Perceptions of Interaction Styles in
+Spoken Dialog@NGW: (Pilot) (using stimulus set 1).  The audio is all in
+{\tt testIStyles}, for example as {\tt stimulus-1-14.wav}.
+
+There will be 3 other surveys: Perceptions of Interaction Styles in
+Spoken Dialog: 2 (respectively 3 and 4).  To create these, copy an
+existing survey and rewire the audios.
+
+**Test the survey ... 
+
+
+...Then you'll download the questionPro results, following the
+instructions in the comments of {\tt anaPerceptions.m}, and process
+them with {\tt anaPerceptions.m} to evaluate the extent to which the
+predictions match human judgments.
 
 Then you'll link to mTurk and get human judgments ...
 
-Then you'll download the questionPro results, following the
-instructions in the comments of {\tt anaPerceptions.m}, and process
-them with {\tt anaPerceptions.m} to evaluate the extent to which the predictions match human judgments. 
-
+procedure for downloading results and testing the hypotheses
 
 
 %==========================================================
 \section{Acknowledgments }  
 
+Jonathan Avila designed the questionPro integration. 
+
+
+\hfill istyles/doc/howto-is.tex
 
 %%=========================================================
 \bibliographystyle{IEEEtran}

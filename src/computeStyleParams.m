@@ -16,7 +16,7 @@
 
 %% The sigmas are computed on the same data used to generate the dimensions.
 %%   with applynormrot('../../social.tl', '../../../midlevel/flowtest/pbook.fss', '.');
-%% A thought: perhaps percentile-based bins would have been better
+%% A belated thought: perhaps percentile-based bins would have been better
 
 %% Since this will process >1000 files, thus hours of runtime,
 %%  it needs to be restartable, so that's why it incrementally appends results to a file

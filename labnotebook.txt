@@ -6,7 +6,9 @@ this file is nigel/istyles/labnotes.txt
 See also the paper istyles/paper/draft.tex and the documentation in
 doc/istyles.pdf.
 
-As a lab notebook much here is not obsolete or irrelevant. 
+See also todo.txt 
+
+As this is a lab notebook, much here is obsolete or irrelevant. 
 
 
 February 11, 2020
@@ -509,6 +511,10 @@ but they suggest
   dim 7: males are less boring (need to revisit)?
   dim 8: males are more personal/positive (need to revisit) ?
 
+**NB (added in March 2021), tendencies reduced but stable, at least
+  for dims 1,2,3&5,if we exclude sides with folk who participated in
+  less than 20 other clips, i.e. who weren't enamoured of
+  conversations with strangers.
 
 birthyear-score correlation for dim 1 is -0.07  younger folk are more engaged
 birthyear-score correlation for dim 2 is 0.12   younger folk let the other talk more 
@@ -1015,7 +1021,7 @@ Aug 7 was concerned that some of the items chosen by my stimulus
 
 
 Aug 18
-   creating the audio clips for the soundcheck,
+   creating the audio clips for the instructions and soundchecks,
    recorded the pieces in mono using praat, stored them in clips-for-experiment
       sox -M left.wav silence.wav left-on-left.wav
       sox left-on-left.wav  left-on-left.wav  left-on-left.wav left-on-left-thrice.wav
@@ -1041,35 +1047,220 @@ Aug 31 QuestionPro work
      ... but when I do so, it's later gone; most likely it prunes out
      "external" references, including those
      to the Media Library of non-owning users ... it works okay if I copy
-     the survey ... then I can add media
+     the survey so I own it; then I can add media
     
    so I patched the wav files into attention check and stereo check 
 
    renamed Jonathan's correlations.m file as anaPerceptions.m, since
    it analyzes perceptions
 
+   As a reminder, in questionPro, to edit a question, open it by
+   clicking the up/down arrows, then click on some text to see the
+   floating small gray menubar, then click the rightmost icon, then
+   from the long top menubar click on edit source.  More information
+   is in the Validating section of doc/howto-is.tex. 
+  
+April 26 updated the documentation doc/howto-is.tex
+
+April 30 noting that the pilot in questionPro is based on the data in testIStyles/stimulus-1-xx.wav
+
+May 10: got anaPerceptions debugged.  Discovering that I correlate by
+myself, but not with the predictions, except for dimensions 1 and 2.
+Wondering if there's a data-scrambling problem. 
+
+May 11:
+  by printing all judgment-prediction correlations, interestingly see lots of correlations
+    on dimension pairings other than those on the diagonal 
+  verifying
+    - the data unscrambling seems okay, with reorganizeResponses() and scales-to-dims-v5.txt
+    - the clips in QuestionPro are inded those in testIStyles/stimulus-1-xx.wav
+    - that data I enter in questionPro looks right after downloading and
+        parsing by extractRawResponses
+
+ So, things check out.  In terms of debugging, the only things left
+    are to hand-check my perceptions of each stimulus to the
+    predictions or, write code to identify cases where the ranks
+    differ most, to listen to them create another dataset, and check
+    whether my perceptions are wonky for that too.
+
+ Instead better to back off and take a New Direction: Can't really
+ expect that all judgments match, across the entire range.  And
+ anyway, when comeing up with interpretations for the dimensions, I
+ didn't examine the entire range.  Rather, I examined only extremes.
+ Thus, only evaluate the correspondence between model-predicted
+ extremes and huamn-judged extremes.
+
+May 12 
+
+ This also solves the problem of demanding too many judgements of the
+subjects. Rather, need only ask regarding the dimension of interest
+for the clip being presented.
+
+In terms of presentation, ideally the question would be to present two
+opposite extremes, and ask "which is more positive, etc." as a
+forced-choice question.  But with 30-second clips, this would likely
+be hard.  According, still do it by soliciting a rating for each clip. 
+
+However asking one judgment per 30-second clip may cause them to lose
+attention.  So throw in perhaps 2 other rating questions.  This will
+have the advantage of getting them familiar with the dimensions that
+will be asked about later. 
+
+Hypothesis: people will judge the pair the same way as the machine.
+Specifically, by a matched-pairs, 1-tailed t-test, people tend to rate
+more highly the one that the system thinks is very high over one it
+thinks is very low.
+
+So, the aim is to get judgments on the dimension of interest for two
+clips that are extremes on the same dimension.  Present these
+back-to-back, so that they are fresh in the mind, and thus avoid
+forgetting effects.  Ideally have them judge each dimension first on a
+dialog where it's pretty neutral, for anchoring purposes.
+
+Piloting this ... listen to each pair for a dimension, and rate them, knowing which
+ dimension they are illustrating.
+  stimuli 1 and 8 on dim 4: left more knowledgable  -1, -1  hi-low --- counterindicated 
+  stimuli 2 and 15 on dim 1: lack-of-engagement 3  -2         (not reversed)  hi-low, supported
+  stimuli 3 and 4 on dim 7: making contrasts -1 2     hi-low, counterindicated 
+  stimuli 5 and 11 on dim 6: close-personal 1 -1   low-high, counterindicated 
+  stimuli 6 and 16 on dim 2: left mostly talking -2 3  hi-lo, counterindicated 
+  stimuli 7 and 10 on dim 5: speculative 1 0   hi-low, supported 
+  stimuli 9 and 14 on dim 8: emphatic 2  1  hi-lo, supported
+  stimuli 12 and 13 on dim 3: negative 1 2                 (not reversed), hi-low, counterindicated
+3 of the 8 were supported (engagement clearly, + speculative, emphatic weakly),
+and the rest counterindicated
+
+Very strange; only dimension 1 is totally solid.  Possible explanations:
+1. I was deceived when I found the commonalities.
+2. The stimuli are being generated wrong. ... do a test of deriveISspace
+  to see whether the ones it finds in writeISexemplars match those if uses for
+  pickClipsForHumanSubjects
+3. Looking for commonalities leads to different perceptions than judging for
+  presence/absence ... do a like-an-experimental-subject listen to some
+  of the extremes I used for categorizing the dimensions
+  ... for Dim 3, yes, mostly, for Dim 4, yes, mostly 
+
+May 13,
+  examining possibility 2 now,
+  deriveISspace('pcdstats/train-30sec.csv', false, 'trainIsNormRot.mat', 'tmp2');
+  then looking at manySoxCommands.sh and mtSoxCommands.sh ... look okay
+  then running bash manySoxCommands; bash mtSoxCmds
+
+ okay, here's a listing of the clips, by relevant dimensions, from mtPredictions.csv
+ with the order of each pair randomized,
+ and after I'd noted my perceptions, looked at the mtPreds file and found if they agreed
+  stimulus 03 06 engagement:  03 low  06 hi ... supporting
+  stimulus 11 16 active speaker: 11 right ranting 16 left speaking  ... supporting
+  stimulus 07 14 positive:   07 is negative 14 positive but wistful ... backwards
+  stimulus 05 08 knowledgable: 05 left is knowledgable 08 right  ... supporting
+  stimulus 15 01  factual:  15 left factual  01 hypothetical ...    supportive
+  stimulus 04 02 distant personal: 04 distant, 02 personal ... backwards
+  stimulus 09 13  generalizing contrasts: 09 contrasts, 13 generalizing ...supportive
+  stimulus 10 12  unfussed emphatic:  10 emphatic 12 unfussed (both weakly) ... backwards 
+
+Once again, dimensions 1,2,5, check out, also 4 and 7.  
+
+dim 3: 14 overall positive feeling about kids, but a wistful negative prosody
+dim 3: 07 African-American woman ... describing negative situation with upbeat-ish prosody
+dim 5: rename "speculative" as speculative/hypothetical?
+dim 6: talking with feeling about some distant political issue
+dim 6: rename distant/distancing/impersonal policies/other people's issues
+dim 8: rename emphatic as emphatic/insistent
+
+Clearly the short names for dimensions that I assign in the paper need
+refinement, to make them easier to use for judgments.
+
+Repeat this for the other stimuli pairs in trainset-olut/trainset-pilot-stimuli
+
+Stimulus Set 2
+  stim 16 06 dim 1 16 some echo, moderately engaged, 06 low engagement ... supporting 
+  stim 12 14 dim 2 12 right talking, 14 left talking  ... supporting
+  stim 13 01 dim 3 13 negative, 01 positive ... supporting
+  stim 05 09 dim 4 05 right knowledgable, acknowledged, 09 right claims knowledgeability ... backwards
+  stim 15 11 dim 5 15 concretely speculative, 11 very abstractly speculative ... supporting 
+  stim 10 03 dim 6 10 personal/local-rain but distant in time, 03 distant ... backwards
+  stim 02 07 dim 7 02 contrasts 07 generalizing .. supporting  
+  stim 08 04 dim 8 08 emphatic-ish, 04 unfussed low-key  ... backwards 
+
+5 of 8 are supporting: dims 1,2,3,5,7 supported. 4 and 6 and 8 do not.  6 is always a problem
+
+Stimulus Set 3
+  dim 1: 08 and 02, 08 moderately engaged, 02 not engaged ... supported
+  dim 2: 03 and 13, 03 left mostly speaking, right polite, 13 right monolog ... supported
+  dim 3: 01 and 06, 01 positive, grudging admiration, 06 negative mixed   ... supported
+  dim 4: 10 and 09, 10 both knowledgable left male , 09 right knowledgable ... supported
+  dim 5: 15 and 14, 15 one speculatation but mostly concrete, 14 how to think positively ... supported
+  dim 6: 16 and 05, 16 distancing yet personal, 05 mixed: mostly about others ... backwards
+  dim 7: 11 and 12, 11 generalizing over career path, 12 lexus vs cadillac comparison ...  supported
+  dim 8: 04 and 07, 04 unfussed family history, 07 insistent ... supported
+  
+7 of the 8 were supported ... but not 6, as usual
+dim 5: rename as concrete vs abstract? ... but on examination, probably not 
 
 
-To Do: 
+Stimulus Set 4
+  d1: 06 07: 06 not engaged, 07 engaged ... supported
+  d2: 12 14: 12 left talking, right listening-ish; 14 right talking, left silent  ... supported
+  d3: 10 03: 10 negative, 03 positive tone, negative foreshadowings ... supported
+  d4: 08 15: 08 right talkative male, left just agrees; left acts knowledgable ...  backwards
+  d5: 11 05: 11 factual, some speculation, 05 very factual  ... supported
+  d6: 04 16: 04 personal, 16 distant, society ... backwards
+  d7: 01 13: 01 contrastish, gardening, 13 generalizing; some contrast ... backwards
+  d8: 09 02: 08 emphatic avoidance of beef, 02 unfussed story ... supported
 
-   enter the edits to anaPerceptions.m
-   test computeStyleParms vs the documentation 
+5 of 8 supported, including 1,2,3,5,8
 
-   document and test the process of creating stimuli, loading to
-   questionPro, downloading results and running anaPerceptions
+Across the 4 stimulus sets, the number of times each dimension was supported:
+dim1: 4 *
+dim2: 4 *
+dim3: 3
+dim4: 2
+dim5: 4 *
+dim6: 0
+dim7: 3
+dim8: 2 
+on average, 2.75
 
-   in QuestionPro, 
-     add a new final comment field, and one after the attention check
-     take out the comment fields
-     add something to prevent "next-next-next" and all zeros
-      - perhaps a warning that I will check before paying
-     restore the missing audios
+Thus, if I fix up dimension 6, maybe I can salvage the experiment 
 
-   upload a new stimulus set
-   judge it
-   process it 
+May 19: re-examining Dimension 6 exemplars
+  last year I examined 9 positive and 13 negative; now doing 17 and 21
+  and leaving a couple of each held-out after hypothesis was formed
+  and looking not just for commonalities among the clips at each pole
+  but for what distinguishes the clips at each pole
+  new tags: accepting things beyond individual control vs envisioning positive change
 
-   add final screen re approval plan (count non-zero entries)
-   do a run-through of Mturk integration    
+June 4, 2020
+
+In ISG, did another little experiment, istles/talk-for-isg-june4.pptx
+
+Wanted to see whether my modifications to the procedure would improve the results.
+Present were David, Adrian, and Jonathan.
+
+Modifications:
+- having them do  a simple "positive assessment vs negative feeling" task before
+ the super tricky "envisioning positive change" vs "accepting" decision
+- showing them the transcript so they could devote more energy to the question,
+ rather than struggling to simultaneously figure out what was going on in the dialog
+
+Findings 
+
+- can't turn off the content perceptions, and these always
+dominate ... at least when asked to consciously judge and report. 
 
 
+- can't turn off other things too; for example, one speaker was felt
+  to have a whiney voice (probably due just to the East Texas dialect
+  and some nasal voice), while the other had a "smiling voice"
+  ... which entirely dominated any perceptions of "style".  This was
+  seen in the second pair of stimuli.
+
+- in general they seemed to treat it as an IR task, looking for some phrase
+in the stimulus that matched some word/concept in one of the dimension descriptions.
+
+- for example, in the "headlights" clip, the fact that the cars didn't
+  behave as desired mapped to negative, hence positive, regardless of
+  the fact that the speakers were talking about partial and possible
+  and likely ways to mod their cars successfully
+
+NB: David suggests doing a low-pass filtering, to kill the lexical information.
