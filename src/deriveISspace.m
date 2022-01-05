@@ -60,13 +60,16 @@ function deriveISspace(PcbStatsFile, makeNewSpace, ISNormRotStatsFile, outputDir
   end
   
   %%warnReExcessives(score, sstats, sourceInfo, featNames);
-  score = score(:,1:16);    %%trim down to save space
+%nigel  score = score(:,1:16);    %%trim down to save space
 
   writeScores(score, sourceInfo, outDir);   
   
   metad = assembleMetadata(basedir, sourceInfo);
   
+  computeTopicAverages(score, metad);
+  return;    %!!!temporary
   findTopicTendencies(score, metad);
+
 
   examineMaleFemale(score, metad);
   examineAge(score, metad);
@@ -75,8 +78,8 @@ function deriveISspace(PcbStatsFile, makeNewSpace, ISNormRotStatsFile, outputDir
 
   %wordFreqAnalysis(score, metad);  % takes aout 2 hours for trainset
 
-%%  hold on   % create a visualization of the interaction style space
-%%  scatter(score(:,1),score(:,2), 1);
+%%  hold on   % create a visualization of the interaction style space%%
+  scatter(score(:,1),score(:,2), 1);
 %%  scatter(0,0,10,'k');
 
   soxCmdfilePath = sprintf('%smanySoxCmds.sh', outDir);
@@ -87,30 +90,97 @@ function deriveISspace(PcbStatsFile, makeNewSpace, ISNormRotStatsFile, outputDir
   examinePredictability(score, metad);
 
 %  writeSomeClosePairs(score, sourceInfo, metad);  % a trifle slow 
-  %% compareWithSubsets(coeff, normalized);  % a trifle verbose
-  %%  computeTopicAverages(score, metad);
+%  compareWithSubsets(coeff, normalized);  % a trifle verbose
+
 
   fclose(soxfd);
 end
 
 
-%% function computeTopicAverages(score, metad)
-%%   minDialogsPerTopicInOrderToAnalyze = 50;
-%%   firstTopic = min(metad(:,8));
-%%   lastTopic =  max(metad(:,8));
-%%   dimOfInterest = 3;
-%%   for topic = firstTopic:lastTopic
-%%     indicesForTopic = metad(:,8) == topic;
-%%     scoresForTopic = score(indicesForTopic,:);
-%%     if size(scoresForTopic,1) > minDialogsPerTopicInOrderToAnalyze
-%%       dimAvg = mean(scoresForTopic(:,dimOfInterest));
-%%       fprintf('for topic %d, average over %4d fragments on  dim %d is %5.2f\n', ...
-%% 	      topic, size(scoresForTopic,dimOfInterest), dimOfInterest, dimAvg);
-%%     end
-%%   end
-%% end
+function computeTopicAverages(score, metad)
+  score = score(:,1:8);
+  %score(:,2) = .2 * abs(score(:,2));
+  %score(:,4) = .2 * abs(score(:,4));
+  minDialogsPerTopicInOrderToAnalyze = 100;  % was 50
+  minDistanceFromOrigin = 1.05;  % to select the 20 most non-generic topics
+  %minDistanceFromOrigin = 1.8   % suitable if do the abs above
+  firstTopic = min(metad(:,8));
+  lastTopic =  max(metad(:,8));
+  nextValidTopicIx = 1;
+%  topicMeans = zeros(1,8);
+  for topic = firstTopic:lastTopic
+    indicesForTopic = metad(:,8) == topic;
+    scoresForTopic = score(indicesForTopic,:);
+    if size(scoresForTopic,1) < minDialogsPerTopicInOrderToAnalyze
+      continue
+    end
+    dimAvgs = mean(scoresForTopic(:,:));
+    if sum(dimAvgs.^2) < minDistanceFromOrigin
+      continue
+    end
+    topicNumbers(nextValidTopicIx) = topic;
+    topicMeans(nextValidTopicIx, :) = dimAvgs;
+    nextValidTopicIx = nextValidTopicIx + 1;
+  end
+  plotTopics(topicMeans, topicNumbers)
+  reportSomeClosePairs(topicMeans, topicNumbers);
+end
+
+function plotTopics(topicMeans, topicNumbers)
+  clf
+  x = topicMeans(:,1);
+  y = topicMeans(:,3);
+  scatter(x, y);
+  labels = {};
+  for i = 1:length(topicNumbers)
+    labels(end+1) = {lower(topicName(topicNumbers(i)))}
+  end 
+  text(x+.05, y+.05, labels);
+  xlabel('both participants engaged ... lack of shared engagement');
+  ylabel('positive assessment ... negative feelings');
+  xlim([-2, 2]);
+  ylim([-2, 2]);
+end
+
+
+%% prints out the pairs of topics with the closest means
+function reportSomeClosePairs(locations, ids)
+  npoints = size(locations,1);
+  fprintf('out of %d topics that meet the criteria\n', npoints);
+  for i = 1:npoints
+    for j = 1:npoints
+      distances(i,j) = euclidean(locations(i,:), locations(j,:));
+    end
+  end
+  findClosePairsInner(locations, ids, distances, 'similar');
+  fprintf('\n')
+  findClosePairsInner(locations, ids, -distances, 'dissimilar');
+end
+
+function findClosePairsInner(locations, ids, distances, label)
+  notMinFlag = 1 + max(distances(:));
+  for column = 1:size(distances, 1);
+    distances(column,column) = notMinFlag;  % exclude the diagonal
+  end
+
+  for minCounter = 1:10
+    minDistance = min(distances(:));
+    [minrow,mincol] = find(distances == minDistance);
+    for k = 1:2:min(10,length(minrow))
+      fprintf('%dth most %s topics are %s and %s\n', ...
+	      minCounter, label, topicName(ids(minrow(k))), topicName(ids(mincol(k))) );
+      printEightNumbers(' ', locations(minrow(k),:));
+      printEightNumbers(' ', locations(mincol(k),:));
+      distances(minrow(k), mincol(k)) = notMinFlag;
+      distances(mincol(k), minrow(k)) = notMinFlag;
+    end
+  end
+end
+
 
 function findTopicTendencies(score, metad)
+  alphaMeans = 0.0000000001;  
+  alphaStds =  0.00000000001; 
   firstTopic = min(metad(:,8));
   lastTopic =  max(metad(:,8));
   %topicInfo = readmatrix('/cygdrive/f/nigel/comparisons/en-swbd/ldc-docs/topic_tab.csv');
@@ -124,12 +194,12 @@ function findTopicTendencies(score, metad)
       if length(scoresForTopic) < 10
 	continue
       end
-      if ttest2(scoresForTopic,scoresForOther, 'Alpha', 0.0000000001) 
+      if ttest2(scoresForTopic,scoresForOther, 'Alpha', alphaMeans) 
 	fprintf('dimension %d, topic %d %s, mean %.2f\n', ...
 		dim, topic, topicName(topic), mean(scoresForTopic));
       end
                                                         
-      if ttest2(scoresForTopic.^2,scoresForOther.^2, 'Alpha', 0.000000000001)
+      if ttest2(scoresForTopic.^2,scoresForOther.^2, 'Alpha', alphaStds)
 	fprintf('dimension %d, topic %d %s, mean sq this %.2f, mean sq other %.2f\n', ...
 		dim, topic, topicName(topic), ...
 		mean(scoresForTopic.^2), mean(scoresForOther.^2));
@@ -139,7 +209,7 @@ function findTopicTendencies(score, metad)
 end
 
 function name = topicName(topic)
-  command = sprintf('grep %d f:/nigel/comparisons/en-swbd/ldc-docs/topic_tab.csv | cut -f 1 -d , > tmp.tmp', topic);
+  command = sprintf('grep %d c:/nigel/switchboard/topic_tab.csv | cut -f 1 -d , > tmp.tmp', topic);
   system(command);
   name = fgetl(fopen('tmp.tmp'));
 end 
@@ -290,6 +360,8 @@ end
 % 2246-l-7:30 and 2196-4@8:30 ditto
 % 2268-r!1:30 and 2194-r@5:30 boring mostly monolog
 
+
+%% clumsily coded; might rewrite this to use the core of reportSomeClosePairs()
 function writeSomeClosePairsBis(score, sourceInfo, metad, header)  
   fprintf('\n%s', header);
   nsides = size(score, 1);
@@ -823,4 +895,13 @@ function warnReExcessives(score, sstats, sourceInfo, featNames)
       fprintf('\n');
     end
   end
+end
+
+
+function printEightNumbers(label, numbers)
+  fprintf('        %7s ', label);
+  fprintf('%6.2f', numbers(1:4));
+  fprintf('  ');
+  fprintf('%6.2f', numbers(5:8));
+  fprintf('\n')
 end

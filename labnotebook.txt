@@ -1264,3 +1264,4 @@ in the stimulus that matched some word/concept in one of the dimension descripti
   and likely ways to mod their cars successfully
 
 NB: David suggests doing a low-pass filtering, to kill the lexical information.
+

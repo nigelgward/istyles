@@ -6,7 +6,7 @@
 function examinePredictability(score, metad)
   isComparable = comparableSubset(metad);
   score = score(isComparable==1,1:8);  % only the comparables, only the first 8 dim 
-  %% score = score(isComparable==1,:); % use this instead if want to consider all dims
+%  score = score(isComparable==1,:); % use this instead if want to consider all dims
   metad = metad(isComparable==1,:);
   speakerList1 = unique(metad(:,speakerField()));
   fprintf('examining over %d speakers\n', length(speakerList1));
