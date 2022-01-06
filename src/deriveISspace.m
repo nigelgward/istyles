@@ -66,6 +66,7 @@ function deriveISspace(PcbStatsFile, makeNewSpace, ISNormRotStatsFile, outputDir
   
   metad = assembleMetadata(basedir, sourceInfo);
   
+  findMoviesOutliers(score, metad);
   computeTopicAverages(score, metad);
   return;    %!!!temporary
   findTopicTendencies(score, metad);
@@ -92,52 +93,81 @@ function deriveISspace(PcbStatsFile, makeNewSpace, ISNormRotStatsFile, outputDir
 %  writeSomeClosePairs(score, sourceInfo, metad);  % a trifle slow 
 %  compareWithSubsets(coeff, normalized);  % a trifle verbose
 
-
   fclose(soxfd);
+end
+
+function findMoviesOutliers(score, metad)
+  moviesTopicID = 348;
+  indicesForMovieFrags = metad(:,8) == moviesTopicID;
+  scoresForMovieFrags = score(indicesForTopic,:);
+  movieAvg = mean(scoresForTopic(:,:));
+  movieFragScores = score(indicesFroMovieFrags,:);
+  movieFragMetad = metad(indicesFroMovieFrags,:);
+  deltasFromAvg = movieFragScores - repmat(movieAvgscores, length(movieFragScores), 1);
+  distances = sum(deltasFromAvg.^2,2);
+  [val,ix] = max(distances);
+  fprintf('most atypical movie fragment is %s %s %d\n', ...
+	  movieFragMetad(ix,2), ...  
+	  trackletter(movieFragMetad(ix,3)), ...
+	  clipString(movieFragMetad(ix,4)) );
 end
 
 
 function computeTopicAverages(score, metad)
+  includeDims2and4 = true;    % normally true just for plotting 
   score = score(:,1:8);
-  %score(:,2) = .2 * abs(score(:,2));
-  %score(:,4) = .2 * abs(score(:,4));
-  minDialogsPerTopicInOrderToAnalyze = 100;  % was 50
+  minFragmentsPerTopicNeededToAnalyze = 100;  % was 50 for sigdial paper
+  minFragmentsPerTopicNeededToPlot = 900;  
   minDistanceFromOrigin = 1.05;  % to select the 20 most non-generic topics
-  %minDistanceFromOrigin = 1.8   % suitable if do the abs above
+  labelOffset = .05;
   firstTopic = min(metad(:,8));
   lastTopic =  max(metad(:,8));
   nextValidTopicIx = 1;
-%  topicMeans = zeros(1,8);
   for topic = firstTopic:lastTopic
     indicesForTopic = metad(:,8) == topic;
     scoresForTopic = score(indicesForTopic,:);
-    if size(scoresForTopic,1) < minDialogsPerTopicInOrderToAnalyze
-      continue
-    end
     dimAvgs = mean(scoresForTopic(:,:));
-    if sum(dimAvgs.^2) < minDistanceFromOrigin
+    distanceFromOrigin = sum(dimAvgs.^2);
+    instancesForTopic = size(scoresForTopic,1);
+    if (instancesForTopic < minFragmentsPerTopicNeededToAnalyze || ...
+	distanceFromOrigin  < minDistanceFromOrigin) && ...
+      instancesForTopic < minFragmentsPerTopicNeededToPlot 
       continue
     end
+    %%fprintf('including topic %d, namely %s\n', topic, topicName(topic));
     topicNumbers(nextValidTopicIx) = topic;
+    if includeDims2and4
+      %% these two appears not to help distance metric, but may want to graph them
+      scoresForTopic(:,2) = abs(scoresForTopic(:,2));   
+      scoresForTopic(:,4) = abs(scoresForTopic(:,4));  
+      dimAvgs = mean(scoresForTopic(:,:));
+      labelOffset = .02;
+    end
     topicMeans(nextValidTopicIx, :) = dimAvgs;
     nextValidTopicIx = nextValidTopicIx + 1;
   end
-  plotTopics(topicMeans, topicNumbers)
+  plotTopics(topicMeans, topicNumbers, labelOffset)
   reportSomeClosePairs(topicMeans, topicNumbers);
 end
 
-function plotTopics(topicMeans, topicNumbers)
+
+function plotTopics(topicMeans, topicNumbers, labelOffset)
+  dimX = 2;  % edit these to creat the different diagrams
+  dimY = 4;
   clf
-  x = topicMeans(:,1);
-  y = topicMeans(:,3);
+  f = figure;
+  f.Position = [180 180 850 850];
+  dimNames = idimNames();
+  x = topicMeans(:,dimX);
+  y = topicMeans(:,dimY);
   scatter(x, y);
-  labels = {};
+  xlabel(dimNames{dimX});
+  ylabel(dimNames(dimY));
+  topicLabels = {};
   for i = 1:length(topicNumbers)
-    labels(end+1) = {lower(topicName(topicNumbers(i)))}
+    topicLabels(end+1) = {lower(topicName(topicNumbers(i)))};
   end 
-  text(x+.05, y+.05, labels);
-  xlabel('both participants engaged ... lack of shared engagement');
-  ylabel('positive assessment ... negative feelings');
+  text(x+labelOffset, y+labelOffset, topicLabels);
   xlim([-2, 2]);
   ylim([-2, 2]);
 end
@@ -156,6 +186,7 @@ function reportSomeClosePairs(locations, ids)
   fprintf('\n')
   findClosePairsInner(locations, ids, -distances, 'dissimilar');
 end
+
 
 function findClosePairsInner(locations, ids, distances, label)
   notMinFlag = 1 + max(distances(:));
@@ -750,6 +781,21 @@ end
 function str = labelString(i, featNames)
   labelCell = featNames(i);
   str = labelCell{1};
+end
+
+
+function names = idimNames()
+  names = {'both participants engaged ... lack of shared engagement'; ...
+%	   'focal speaker mostly talking ... focal speaker listening actively'; ...
+	   'sharing the floor ... clear talker/listener separation'; ...
+	   'positive assessment ... negative feelings'; ...
+%	   'focal speaker speaks knowledgeably ...nonfocal speaker speaks knowledgeably'; ...
+	   'no knowledge inequality ... one speaker more knowledgeable'; ...
+	   'factual ... thoughtful'; ...
+	   'accepting things beyond individual control ... envisioning positive change'; ...
+	   'making points ... referencing shared experiences'; ...
+	   'unfussed ... emphatic'; ...
+	  };
 end
 
 
