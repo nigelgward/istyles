@@ -66,7 +66,7 @@ function deriveISspace(PcbStatsFile, makeNewSpace, ISNormRotStatsFile, outputDir
   
   metad = assembleMetadata(basedir, sourceInfo);
   
-  findMoviesOutliers(score, metad);
+  findMoviesOutliersAndTypicals(score, metad);
   computeTopicAverages(score, metad);
   return;    %!!!temporary
   findTopicTendencies(score, metad);
@@ -96,30 +96,41 @@ function deriveISspace(PcbStatsFile, makeNewSpace, ISNormRotStatsFile, outputDir
   fclose(soxfd);
 end
 
-function findMoviesOutliers(score, metad)
+function findMoviesOutliersAndTypicals(score, metad)
+  score=score(:,1:8);
   moviesTopicID = 348;
   indicesForMovieFrags = metad(:,8) == moviesTopicID;
-  scoresForMovieFrags = score(indicesForTopic,:);
-  movieAvg = mean(scoresForTopic(:,:));
-  movieFragScores = score(indicesFroMovieFrags,:);
-  movieFragMetad = metad(indicesFroMovieFrags,:);
-  deltasFromAvg = movieFragScores - repmat(movieAvgscores, length(movieFragScores), 1);
+  movieFragScores = score(indicesForMovieFrags,:);
+  movieFragMetad = metad(indicesForMovieFrags,:);
+  movieAvg = mean(movieFragScores(:,:))
+  deltasFromAvg = movieFragScores - repmat(movieAvg, length(movieFragScores), 1);
   distances = sum(deltasFromAvg.^2,2);
-  [val,ix] = max(distances);
-  fprintf('most atypical movie fragment is %s %s %d\n', ...
-	  movieFragMetad(ix,2), ...  
-	  trackletter(movieFragMetad(ix,3)), ...
-	  clipString(movieFragMetad(ix,4)) );
+  for i = 1:20
+    [val,ix] = max(distances);
+    fprintf('an atypical movie fragment is %d %s %s\n', ...
+	    movieFragMetad(ix,2), ...  
+	    trackLetter(movieFragMetad(ix,3)), ...
+	    clipString(movieFragMetad(ix,4)) );
+    distances(ix) = 0;
+  end
+  distances = sum(deltasFromAvg.^2,2);
+  for i = 1:10
+    [val,ix] = min(distances);
+    fprintf('a typical movie fragment is %d %s %s\n', ...
+	    movieFragMetad(ix,2), ...  
+	    trackLetter(movieFragMetad(ix,3)), ...
+	    clipString(movieFragMetad(ix,4)) );
+    distances(ix) = max(distances(:));
+  end
+  
 end
 
 
 function computeTopicAverages(score, metad)
-  includeDims2and4 = true;    % normally true just for plotting 
   score = score(:,1:8);
   minFragmentsPerTopicNeededToAnalyze = 100;  % was 50 for sigdial paper
   minFragmentsPerTopicNeededToPlot = 900;  
   minDistanceFromOrigin = 1.05;  % to select the 20 most non-generic topics
-  labelOffset = .05;
   firstTopic = min(metad(:,8));
   lastTopic =  max(metad(:,8));
   nextValidTopicIx = 1;
@@ -136,7 +147,8 @@ function computeTopicAverages(score, metad)
     end
     %%fprintf('including topic %d, namely %s\n', topic, topicName(topic));
     topicNumbers(nextValidTopicIx) = topic;
-    if includeDims2and4
+    symmetric = true;    % change this to true when plotting dims 2 and 4
+    if symmetric
       %% these two appears not to help distance metric, but may want to graph them
       scoresForTopic(:,2) = abs(scoresForTopic(:,2));   
       scoresForTopic(:,4) = abs(scoresForTopic(:,4));  
@@ -146,30 +158,34 @@ function computeTopicAverages(score, metad)
     topicMeans(nextValidTopicIx, :) = dimAvgs;
     nextValidTopicIx = nextValidTopicIx + 1;
   end
-  plotTopics(topicMeans, topicNumbers, labelOffset)
+%  plotTopics(topicMeans, topicNumbers, 0.02, 1, 3, score)
+% plotTopics(topicMeans, topicNumbers, 0.01, 5, 6, score)
+  plotTopics(topicMeans, topicNumbers, 0.005, 2, 4, score)
+
   reportSomeClosePairs(topicMeans, topicNumbers);
 end
 
 
-function plotTopics(topicMeans, topicNumbers, labelOffset)
-  dimX = 2;  % edit these to creat the different diagrams
-  dimY = 4;
+function plotTopics(topicMeans, topicNumbers, labelOffset, dimX, dimY, score)
   clf
   f = figure;
-  f.Position = [180 180 850 850];
+  f.Position = [160 160 850 850];
   dimNames = idimNames();
-  x = topicMeans(:,dimX);
-  y = topicMeans(:,dimY);
+  x = topicMeans(:,dimX) / std(score(:,dimX));
+  y = topicMeans(:,dimY) / std(score(:,dimY));
   scatter(x, y);
   xlabel(dimNames{dimX});
   ylabel(dimNames(dimY));
   topicLabels = {};
   for i = 1:length(topicNumbers)
-    topicLabels(end+1) = {lower(topicName(topicNumbers(i)))};
+    topicLabels(end+1) = {topicName(topicNumbers(i))};
   end 
   text(x+labelOffset, y+labelOffset, topicLabels);
   xlim([-2, 2]);
   ylim([-2, 2]);
+  hold on
+  plot(0,0, 'ko','MarkerSize', 16);
+  hold off
 end
 
 
@@ -239,10 +255,18 @@ function findTopicTendencies(score, metad)
   end
 end
 
+%% inefficient
 function name = topicName(topic)
   command = sprintf('grep %d c:/nigel/switchboard/topic_tab.csv | cut -f 1 -d , > tmp.tmp', topic);
   system(command);
-  name = fgetl(fopen('tmp.tmp'));
+  fd = fopen('tmp.tmp');
+  raw = fgetl(fd);
+  fclose(fd);
+  system('rm tmp.tmp');
+  name = extractBetween(raw, 2, strlength(raw) -1);  % strip initial and final quotes
+  name = lower(name);
+  name = strrep(name, "tv", "TV");
+  name = strrep(name, "aids", "AIDS");
 end 
 
 
